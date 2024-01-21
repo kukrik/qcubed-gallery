@@ -1,0 +1,17 @@
+{
+    "name": "kukrik/qcubed-gallery",
+    "description": "QCubed v4 plugin for created Gallery",
+    "type": "qcubed-library",
+    "keywords": ["qcubed", "qcubed-gallerymanager", "qcubed-gallery"],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+      "psr-4": {"QCubed\\Plugin\\": "src/"}
+    },
+    "extra": {
+        "examples": ["gallerymanager.php", "gallery_list.php"]
+    },
+    "minimum-stability": "dev"
+}
