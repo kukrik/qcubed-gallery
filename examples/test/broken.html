@@ -1,0 +1,34 @@
+<html>
+<head>
+    <style>
+        img {
+            /*width: 200px;*/
+            height: 200px;
+        }
+    </style>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> </script>
+</head>
+
+<body>
+<h2>
+    Fixing the Broken image automatically using <i> jQuery each() method. </i>
+</h2>
+
+<img src = "rukkilill.jpg" />
+<img src = "https://wwwS/images/logo-footer-b.png" />
+<img src = "empty-image-icon.png" />
+
+<script>
+
+    $("img").on("error", function () {
+        $(this).attr(
+            "src",
+            "broken-image-icon.png"
+        );
+        $(this).width('auto');
+    });
+
+
+</script>
+</body>
+</html>

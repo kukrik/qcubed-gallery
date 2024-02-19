@@ -40,7 +40,7 @@ use QCubed\Html;
  * This class is NOT intended to support column filters, but a subclass could be created that could do so. Just don't
  * do that here.
  *
- * @property boolean $RenderAsHeader if true, all cells in the column will be rendered with a tag "th" tag instead of tag "td"
+ * @property boolean $RenderAsHeader if true, all cells in the column will be rendered with a <<th>> tag instead of <<td>>
  * @property-read  QQClause $OrderByClause The sorting clause based on the selected headers.
  * @property  string $SortColumnId The id of the currently sorted column. Does not change if columns are re-ordered.
  * @property  int $SortColumnIndex The index of the currently sorted column.

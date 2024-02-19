@@ -2,7 +2,7 @@
     "name": "kukrik/qcubed-gallery",
     "description": "QCubed v4 plugin for created Gallery",
     "type": "qcubed-library",
-    "keywords": ["qcubed", "qcubed-gallerymanager", "qcubed-gallery"],
+    "keywords": ["qcubed", "qcubed-gallery"],
     "license": "MIT",
     "require": {
         "php": ">=7.4"
