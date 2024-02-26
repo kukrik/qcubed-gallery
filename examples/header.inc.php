@@ -26,7 +26,6 @@ use QCubed as Q;
 	<link href="../assets/css/awesome-bootstrap-checkbox.css" rel="stylesheet"/>
     <link href="/qcubed-4/vendor/kukrik/bootstrap-filecontrol/assets/css/jquery.fileupload.css" rel="stylesheet" />
     <link href="/qcubed-4/vendor/kukrik/bootstrap-filecontrol/assets/css/jquery.fileupload-ui.css" rel="stylesheet" />
-
     <style>
         .preview img {
             height: 90px;
@@ -44,6 +43,5 @@ use QCubed as Q;
 			-webkit-appearance: none;
 		}
 	</style>
-
 </head>
 	<body>

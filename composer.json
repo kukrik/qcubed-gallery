@@ -11,7 +11,7 @@
       "psr-4": {"QCubed\\Plugin\\": "src/"}
     },
     "extra": {
-        "examples": ["gallerymanager.php", "gallery_list.php"]
+        "examples": ["gallerymanager.php", "list.php"]
     },
     "minimum-stability": "dev"
 }
