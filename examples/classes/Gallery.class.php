@@ -115,12 +115,6 @@ class Gallery extends Q\Control\Panel
         $this->createModals();
         $this->createToastr();
         $this->checkGalleryAvailability();
-
-//        $list = Galleries::loadArrayByListId($this->intGalleriesList);
-//        print "<pre>";
-//        print_r($list);
-//        print "</pre>";
-
     }
 
     protected function createTable()
@@ -819,6 +813,27 @@ class Gallery extends Q\Control\Panel
             $this->dlgToastr6->notify();
         } else {
             $this->dlgToastr5->notify();
+        }
+
+        if (Galleries::countByListId($this->intGalleriesList) == 0) {
+
+            Application::executeJavaScript("
+                $('.fileinput-button').removeClass('disabled');
+                $('.back-to-list').removeClass('disabled');
+                $('.fileinfo-wrapper').removeClass('hidden');
+                $('.table-gallery').addClass('hidden');
+            ");
+
+            $objList = ListOfGalleries::loadById($this->intGalleriesList);
+            $objList->setAuthor('');
+            $objList->setDescription('');
+            $objList->setStatus(2);
+            $objList->save();
+
+            $this->txtAuthor->Text = '';
+            $this->txtDescription->Text = '';
+            $this->lstStatusGallery->SelectedValue = 2;
+            $this->dtgGalleryList->refresh();
         }
     }
 

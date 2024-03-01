@@ -18,6 +18,7 @@ class ExamplesForm extends Form
         $this->dtrGalleryList = new DataRepeater($this);
         $this->dtrGalleryList->Template = 'dtr_GalleryList.tpl.php';
         $this->dtrGalleryList->setDataBinder('dtrGalleryList_Bind');
+        $this->dtrGalleryList->UseWrapper = false;
     }
 
     public function dtrGalleryList_Bind()

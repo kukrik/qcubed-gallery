@@ -3052,7 +3052,7 @@
 
       if( G.O.items == null ) {
         // retrieve all element having "data-nanogallery2-lightbox" and from the same group if defined
-        var elts = jQuery('[data-nanogallery2-Lightbox');
+        var elts = jQuery('[data-nanogallery2-Lightbox]');
         // element group
         var g = G.$E.base[0].dataset.nanogallery2Lgroup;
 
@@ -9517,24 +9517,29 @@
       if( vomIdx == null ) { return; }
       
       var item = G.VOM.content.current.NGY2Item();
+      var toolbarContainer = $('.toolbarContainer');
     
       // LABEL
       var setTxt = false;
       // set title
       if( item.title !== undefined && item.title != '' ) {
         G.VOM.$viewer.find('.ngy2viewerToolAction').find('.title').html(item.title);
+        toolbarContainer.css('visibility', 'visible').first().fadeIn();
         setTxt = true;
       }
       else {
         G.VOM.$viewer.find('.ngy2viewerToolAction').find('.title').html('');
+        toolbarContainer.css('visibility', 'hidden').first().fadeOut('slow');
       }
       // set description
       if( item.description !== undefined && item.description != '' ) {
         G.VOM.$viewer.find('.ngy2viewerToolAction').find('.description').html(item.description);
+        toolbarContainer.css('visibility', 'visible').first().fadeIn();
         setTxt = true;
       }
       else {
         G.VOM.$viewer.find('.ngy2viewerToolAction').find('.description').html('');
+        toolbarContainer.css('visibility', 'hidden').first().fadeOut('slow');
       }
       
       if( setTxt ) {

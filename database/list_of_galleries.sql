@@ -38,6 +38,6 @@ CREATE TABLE `list_of_galleries` (
   KEY `status_idx` (`status`) USING BTREE,
   CONSTRAINT `album_id_albums_ibfk` FOREIGN KEY (`album_id`) REFERENCES `albums` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `status_status_ibfk` FOREIGN KEY (`status`) REFERENCES `status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -1,0 +1,514 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Gallery translation\n"
+"POT-Creation-Date: 2024-03-01 16:36+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Tiit Papp <tiit.papp@gmail.com>\n"
+"Language-Team: tiit.papp@gmail.com\n"
+"Language: et\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: t;p\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: examples\n"
+"X-Poedit-SearchPath-1: src\n"
+
+#: examples/album_create.php:31
+msgid "Album create"
+msgstr "Loo album"
+
+#: examples/classes/AlbumCreate.class.php:64
+#: examples/classes/GalleryList.class.php:87
+#: examples/classes/GallerySettings.class.php:79
+msgid "Title"
+msgstr "Pealkiri"
+
+#: examples/classes/AlbumCreate.class.php:70
+msgid "The title of the new album"
+msgstr "Uue albumi pealkiri"
+
+#: examples/classes/AlbumCreate.class.php:80
+#: examples/classes/GalleryList.class.php:151
+#: examples/classes/GallerySettings.class.php:96
+#: examples/tables/ArticleCategoriesTable.php:35
+#: examples/tables/GallerySettingsTable.php:35
+msgid "Is activated"
+msgstr "On aktiveeritud"
+
+#: examples/classes/AlbumCreate.class.php:85
+#: examples/classes/GalleryList.class.php:156
+#: examples/classes/GallerySettings.class.php:101
+msgid "Active"
+msgstr "Aktiivne"
+
+#: examples/classes/AlbumCreate.class.php:85
+#: examples/classes/GalleryList.class.php:156
+#: examples/classes/GallerySettings.class.php:101
+msgid "Inactive"
+msgstr "Mitteaktiivne"
+
+#: examples/classes/AlbumCreate.class.php:90
+#: examples/classes/GalleryList.class.php:94
+#: examples/classes/GalleryList.class.php:160
+#: examples/classes/GallerySettings.class.php:106
+#: examples/tables/ArticleCategoriesTable.php:37
+#: examples/tables/GallerySettingsTable.php:37
+msgid "Created"
+msgstr "Loodud"
+
+#: examples/classes/AlbumCreate.class.php:105
+#: examples/classes/GallerySettings.class.php:141
+msgid " Add album"
+msgstr " Lisa album"
+
+#: examples/classes/AlbumCreate.class.php:115
+#: examples/classes/GalleryList.class.php:195
+#: examples/classes/PageMetaDataPanel.class.php:126
+#: examples/classes/PageMetaDataPanel.class.php:224
+#: examples/classes/PageMetaDataPanel.class.php:276
+msgid "Save"
+msgstr "Salvesta"
+
+#: examples/classes/AlbumCreate.class.php:125
+#: examples/classes/GalleryList.class.php:206
+#: examples/classes/GallerySettings.class.php:160
+#: examples/classes/PageMetaDataPanel.class.php:158
+msgid "Cancel"
+msgstr "Loobu"
+
+#: examples/classes/AlbumCreate.class.php:136
+#: examples/classes/Gallery.class.php:346
+#: examples/classes/Gallery.class.php:369
+#: examples/classes/GalleryList.class.php:218
+#: examples/classes/GallerySettings.class.php:171
+#: examples/classes/PageMetaDataPanel.class.php:189
+msgid "Tip"
+msgstr "Näpunäide"
+
+#: examples/classes/AlbumCreate.class.php:137
+#: examples/classes/GalleryList.class.php:219
+#: examples/classes/GallerySettings.class.php:172
+msgid ""
+"<p style=\"margin-top: 15px;\">Album cannot be created without name!</p>"
+msgstr "<p style=“margin-top: 15px;”>Albumit ei saa ilma nimeta luua!</p>"
+
+#: examples/classes/AlbumCreate.class.php:139
+#: examples/classes/Gallery.class.php:349
+#: examples/classes/Gallery.class.php:371
+#: examples/classes/GalleryList.class.php:221
+#: examples/classes/GallerySettings.class.php:174
+msgid "I close the window"
+msgstr "Panen akna kinni"
+
+#: examples/classes/AlbumCreate.class.php:144
+#: examples/classes/GalleryList.class.php:224
+msgid ""
+"<p style=\"line-height: 25px; margin-bottom: 2px;\">Cannot create a folder "
+"with the same name!</p>"
+msgstr ""
+"<p style=“line-height: 25px; margin-bottom: 2px;”>Sama nimega kausta ei saa "
+"luua!</p>"
+
+#: examples/classes/AlbumCreate.class.php:145
+#: examples/classes/Gallery.class.php:353
+#: examples/classes/Gallery.class.php:375
+#: examples/classes/GalleryList.class.php:225
+#: examples/classes/PageMetaDataPanel.class.php:179
+msgid "Warning"
+msgstr "Hoiatus"
+
+#: examples/classes/AlbumCreate.class.php:147
+#: examples/classes/Gallery.class.php:355
+#: examples/classes/Gallery.class.php:377
+#: examples/classes/GalleryList.class.php:227
+msgid "I understand"
+msgstr "Ma saan aru"
+
+#: examples/classes/Gallery.class.php:145
+msgid "Actions"
+msgstr "Tegevused"
+
+#: examples/classes/Gallery.class.php:150
+#: examples/classes/GalleryList.class.php:103
+msgid "Previous"
+msgstr "Eelmine"
+
+#: examples/classes/Gallery.class.php:151
+#: examples/classes/GalleryList.class.php:104
+msgid "Next"
+msgstr "Järgmine"
+
+#: examples/classes/Gallery.class.php:175
+msgid "The title of the gallery"
+msgstr "Galerii pealkiri"
+
+#: examples/classes/Gallery.class.php:188
+msgid "Brief description"
+msgstr "Lühikirjeldus"
+
+#: examples/classes/Gallery.class.php:202
+msgid "Author's name"
+msgstr "Autori nimi"
+
+#: examples/classes/Gallery.class.php:214
+#: examples/classes/Gallery.class.php:225
+msgid "Publiched"
+msgstr "Avaldatud"
+
+#: examples/classes/Gallery.class.php:214
+#: examples/classes/Gallery.class.php:225
+msgid "Hidden"
+msgstr "Peidetud"
+
+#: examples/classes/Gallery.class.php:240
+msgid " Add files"
+msgstr " Lisa faile"
+
+#: examples/classes/Gallery.class.php:251
+msgid "Start upload"
+msgstr "Alusta üleslaadimist"
+
+#: examples/classes/Gallery.class.php:260
+msgid "Cancel all uploads"
+msgstr "Loobu kõikidest üleslaadimistest"
+
+#: examples/classes/Gallery.class.php:268
+msgid "Done"
+msgstr "Valmis"
+
+#: examples/classes/Gallery.class.php:274
+msgid "Back to list"
+msgstr "Tagasi nimekirja"
+
+#: examples/classes/Gallery.class.php:283
+#: examples/classes/GallerySettings.class.php:151
+#: examples/classes/PageMetaDataPanel.class.php:124
+#: examples/classes/PageMetaDataPanel.class.php:229
+msgid "Update"
+msgstr "Uuenda"
+
+#: examples/classes/Gallery.class.php:293
+#: examples/classes/PageMetaDataPanel.class.php:151
+msgid "Delete"
+msgstr "Kustuta"
+
+#: examples/classes/Gallery.class.php:338
+#: examples/classes/Gallery.class.php:596
+msgid "Uncompleted link..."
+msgstr "Komplekteerimata link…"
+
+#: examples/classes/Gallery.class.php:347
+msgid ""
+"<p style=\"margin-top: 15px;\">The gallery cannot be updated without a name!"
+"</p>"
+msgstr "<p style=“margin-top: 15px;”>Galeriit ei saa ilma nimeta uuendada!</p>"
+
+#: examples/classes/Gallery.class.php:352
+msgid ""
+"<p style=\"line-height: 25px; margin-bottom: 2px;\">Cannot update a gallery "
+"with the same name!</p>"
+msgstr ""
+"<p style=“line-height: 25px; margin-bottom: 2px;”>Sama nimega galeriid ei "
+"saa uuendada!</p>"
+
+#: examples/classes/Gallery.class.php:364
+#: examples/classes/Gallery.class.php:386
+#: examples/classes/PageMetaDataPanel.class.php:183
+msgid "I'll cancel"
+msgstr "Ma loobun"
+
+#: examples/classes/Gallery.class.php:368
+msgid ""
+"<p style=\"line-height: 15px; margin-bottom: 2px;\">File cannot be updated "
+"without name!</p>"
+msgstr ""
+"<p style=“line-height: 15px; margin-bottom: 2px;”>File cannot be updated "
+"without name!</p>"
+
+#: examples/classes/Gallery.class.php:374
+msgid ""
+"<p style=\"line-height: 25px; margin-bottom: 2px;\">Cannot create a file "
+"with the same name!</p>"
+msgstr ""
+"<p style=“line-height: 25px; margin-bottom: 2px;”>Sama nimega faili ei saa "
+"üle kirjutada!</p>"
+
+#: examples/classes/Gallery.class.php:395
+msgid "<strong>Well done!</strong> Gallery update was successful."
+msgstr "<strong>Hästi tehtud!</strong> Galerii uuendamine õnnestus."
+
+#: examples/classes/Gallery.class.php:401
+msgid "<strong>Sorry!</strong> Failed to update gallery."
+msgstr "<strong>Vabandust!</strong> Galerii uuendamine ebaõnnestus."
+
+#: examples/classes/Gallery.class.php:407
+msgid "<strong>Well done!</strong> File changed successfully."
+msgstr "<strong>Hästi tehtud!</strong> Faili muutmine õnnestus."
+
+#: examples/classes/Gallery.class.php:413
+msgid "<strong>Sorry!</strong> Failed to change file."
+msgstr "<strong>Vabandust!</strong> Faili muutmine ebaõnnestus."
+
+#: examples/classes/Gallery.class.php:419
+msgid "<strong>Well done!</strong> File deleted successfully."
+msgstr "<strong>Hästi tehtud!</strong> Faili kustutamine õnnestus."
+
+#: examples/classes/Gallery.class.php:425
+msgid "<strong>Sorry!</strong> Failed to delete file."
+msgstr "<strong>Vabandust!</strong> Faili kustutamine ebaõnnestus."
+
+#: examples/classes/Gallery.class.php:431
+msgid ""
+"<strong>Well done!</strong> The folder and files have been successfully "
+"deleted."
+msgstr "<strong>Hästi tehtud!</strong> Kaust ja failid on edukalt kustutatud."
+
+#: examples/classes/Gallery.class.php:437
+msgid "<strong>Sorry!</strong> Failed to delete folder and files."
+msgstr "<strong>Vabandust!</strong> Kausta ja failide kustutamine ebaõnnestus."
+
+#: examples/classes/Gallery.class.php:743
+msgid "Change"
+msgstr "Muuda"
+
+#: examples/classes/GalleryList.class.php:90
+msgid "Status"
+msgstr "Staatus"
+
+#: examples/classes/GalleryList.class.php:98
+msgid "Modified"
+msgstr "Muudetud"
+
+#: examples/classes/GalleryList.class.php:128
+msgid "Search..."
+msgstr "Otsi…"
+
+#: examples/classes/GalleryList.class.php:138
+msgid "The title of the new gallery"
+msgstr "Uue galerii pealkiri"
+
+#: examples/classes/GalleryList.class.php:170
+#: examples/classes/GallerySettings.class.php:117
+#: examples/tables/ArticleCategoriesTable.php:39
+#: examples/tables/GallerySettingsTable.php:39
+msgid "Updated"
+msgstr "Uuendatud"
+
+#: examples/classes/GalleryList.class.php:185
+msgid " Add gallery"
+msgstr "Lisa galerii"
+
+#: examples/classes/GalleryList.class.php:235
+msgid "<strong>Well done!</strong> The gallery has been created and saved."
+msgstr "<strong>Hästi tehtud!</strong> Galerii on loodud ja salvestatud."
+
+#: examples/classes/GallerySettings.class.php:85
+msgid "The title of the album"
+msgstr "Albumi pealkiri"
+
+#: examples/classes/GallerySettings.class.php:182
+msgid ""
+"<strong>Well done!</strong> The album has been edited or the album status "
+"has been changed."
+msgstr ""
+"<strong>Hästi tehtud!</strong> Album on muudetud või albumi olekut muudetud."
+
+#: examples/classes/GallerySettings.class.php:188
+msgid "<strong>Sorry!</strong> Folder name change failed!"
+msgstr "<strong>Vabandust!</strong> Kausta nime muutmine ebaõnnestus!"
+
+#: examples/classes/PageMetaDataPanel.class.php:64
+msgid ""
+"These fields can be left blank. If there is a special need to highlight the "
+"special\n"
+"                                features of one page or another, which "
+"search engines might find and offer to people.\n"
+"                                By default, the global metadata of the "
+"website is sufficient."
+msgstr ""
+"Need väljad võib tühjaks jätta. Kui on eriline vajadus erilist esile tõsta\n"
+"                                 ühe või teise lehe funktsioone, mida "
+"otsingumootorid võivad leida ja inimestele pakkuda.\n"
+"                                 Vaikimisi piisab veebisaidi globaalsetest "
+"metaandmetest."
+
+#: examples/classes/PageMetaDataPanel.class.php:69
+msgid "Keywords of the metadata"
+msgstr "Metaandmete märksõnad"
+
+#: examples/classes/PageMetaDataPanel.class.php:84
+msgid "Description of the metadata"
+msgstr "Metaandmete kirjeldus"
+
+#: examples/classes/PageMetaDataPanel.class.php:99
+msgid "Author"
+msgstr "Autor"
+
+#: examples/classes/PageMetaDataPanel.class.php:139
+#: examples/classes/PageMetaDataPanel.class.php:230
+msgid "Update and close"
+msgstr "Uuenda ja sulge"
+
+#: examples/classes/PageMetaDataPanel.class.php:141
+#: examples/classes/PageMetaDataPanel.class.php:225
+#: examples/classes/PageMetaDataPanel.class.php:277
+msgid "Save and close"
+msgstr "Salvesta ja sulge"
+
+#: examples/classes/PageMetaDataPanel.class.php:170
+msgid "<strong>Well done!</strong> The post has been saved or modified."
+msgstr "<strong>Hästi tehtud!</strong> Postitus on salvestatud või muudetud."
+
+#: examples/classes/PageMetaDataPanel.class.php:177
+msgid ""
+"<p style=\"line-height: 25px; margin-bottom: 2px;\">Are you sure you want to "
+"delete the specific metadata of this page?</p>\n"
+"                            <p style=\"line-height: 25px; margin-bottom: "
+"-3px;\">If desired, you can later re-write!</p>"
+msgstr ""
+"<p style=“line-height: 25px; margin-bottom: 2px;”>Kas olete kindel, et "
+"soovite selle lehe konkreetsed metaandmed kustutada?</p>\n"
+"                            <p style=“line-height: 25px; margin-bottom: "
+"-3px;”>Soovi korral saab hiljem uuesti kirjutada!</p>"
+
+#: examples/classes/PageMetaDataPanel.class.php:181
+msgid "I accept"
+msgstr "Ma aktsepteerin"
+
+#: examples/classes/PageMetaDataPanel.class.php:181
+msgid "This menu metadata has been permanently deleted."
+msgstr "Selle menüü metaandmed on jäädavalt kustutatud."
+
+#: examples/classes/PageMetaDataPanel.class.php:187
+msgid ""
+"<p style=\"line-height: 25px; margin-bottom: 2px;\">Currently, it is not "
+"possible to save the metadata for this article here.</p><p style=\"line-"
+"height: 25px; margin-bottom: -3px;\">\n"
+"                                Before, you must fill in and save the "
+"article content.</p>"
+msgstr ""
+"<p style=“line-height: 25px; margin-bottom: 2px;”>Praegu ei ole võimalik "
+"selle artikli metaandmeid siia salvestada.</p><p style=“line-height: 25px; "
+"margin-bottom: -3px;”>\n"
+"                                Enne tuleb täita ja salvestada artikli sisu."
+"</p>"
+
+#: examples/classes/PageMetaDataPanel.class.php:191
+msgid "OK"
+msgstr "OK"
+
+#: examples/dtr_GalleryList.tpl.php:7
+msgid " pictures"
+msgstr " pilti"
+
+#: examples/gallery.php:32
+msgid "Gallery"
+msgstr "Galerii"
+
+#: examples/gallery_list.php:35
+msgid "Galleries list"
+msgstr "Galeriide loend"
+
+#: examples/gallery_list.php:38
+msgid "Gallery settings"
+msgstr "Galerii seaded"
+
+#: examples/show_gallery.php:70
+msgid "Back"
+msgstr "Tagasi"
+
+#: examples/tables/ArticleCategoriesTable.php:33
+#: examples/tables/GallerySettingsTable.php:33
+msgid "Id"
+msgstr "Id"
+
+#: examples/tables/ArticleCategoriesTable.php:34
+#: examples/tables/GallerySettingsTable.php:34
+msgid "Name"
+msgstr "Nimi"
+
+#: src/Checkbox.php:182
+msgid "is required"
+msgstr "on vajalik"
+
+#: src/Checkbox.php:184
+msgid "Required"
+msgstr "Nõutav"
+
+#: src/FileHandler.php:116
+msgid "Uploaded file exceeds upload_max_filesize directive in php.ini"
+msgstr "Üleslaaditud fail ületab faili php.ini direktiivi upload_max_filesize"
+
+#: src/FileHandler.php:117
+msgid ""
+"Uploaded file exceeds MAX_FILE_SIZE directive specified in the HTML form"
+msgstr "Üleslaaditud fail ületab HTML-vormis määratud MAX_FILE_SIZE direktiivi"
+
+#: src/FileHandler.php:118
+msgid "The uploaded file was only partially uploaded"
+msgstr "Üleslaaditud fail laaditi üles ainult osaliselt"
+
+#: src/FileHandler.php:119
+msgid "Failed to move uploaded file"
+msgstr "Üleslaaditud faili teisaldamine ebaõnnestus"
+
+#: src/FileHandler.php:120
+msgid "Missing a temporary folder"
+msgstr "Missing a temporary folder"
+
+#: src/FileHandler.php:121
+msgid "Failed to write file to disk"
+msgstr "Faili kettale kirjutamine ebaõnnestus"
+
+#: src/FileHandler.php:122
+msgid "A PHP extension stopped the file upload"
+msgstr "PHP laiendus peatas faili üleslaadimise"
+
+#: src/FileHandler.php:123
+msgid "Filetype not allowed"
+msgstr "Failitüüp pole lubatud"
+
+#: src/FileHandler.php:124
+msgid "Invalid image type"
+msgstr "Kehtetu pilditüüp"
+
+#: src/FileHandler.php:125
+msgid "Invalid file size"
+msgstr "Kehtetu faili suurus"
+
+#: src/FileHandler.php:126
+#, php-format
+msgid "File size exceeds max_filesize %s"
+msgstr "Faili suurus ületab max_filesize %s"
+
+#: src/FileHandler.php:127
+#, php-format
+msgid "%s already exists"
+msgstr "%s on juba olemas"
+
+#: src/FileHandler.php:128
+msgid "Invalid image / failed getimagesize()"
+msgstr "Vigane pilt / getimagesize() ebaõnnestus"
+
+#: src/FileHandler.php:129
+msgid "Failed to resize image"
+msgstr "Pildi suuruse muutmine ebaõnnestus"
+
+#: src/FileHandler.php:130
+msgid "imagejpeg() failed to create and resize the image"
+msgstr "imagejpeg() ei suutnud pilti luua ja selle suurust muuta"
+
+#: src/FileHandler.php:131
+msgid "Failed to open stream: No such directory to put into"
+msgstr "Voo avamine ebaõnnestus: sellist kataloogi pole, kuhu panna"
+
+#: src/FileHandler.php:132
+msgid "Failed to open output stream"
+msgstr "Väljundvoo avamine ebaõnnestus"
+
+#: src/FileHandler.php:133
+msgid "Failed to open input stream"
+msgstr "Sisendvoo avamine ebaõnnestus"

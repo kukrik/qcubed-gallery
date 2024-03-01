@@ -7,6 +7,9 @@ ini_set('display_errors', TRUE); // Error display - OFF in production env or rea
 ini_set('log_errors', TRUE); // Error logging
 
 use QCubed as Q;
+use QCubed\Action\ActionParams;
+use QCubed\Project\Application;
+use QCubed\Bootstrap as Bs;
 use QCubed\Project\Control\ControlBase;
 use QCubed\Project\Control\FormBase as Form;
 use QCubed\Query\QQ;
@@ -15,23 +18,65 @@ use QCubed\Query\QQ;
 class ExamplesForm extends Form
 {
     protected $objGallery;
+    protected $lblTitle;
+    protected $intGalleriesList;
+    protected $objGalleriesList;
+    protected $btnBack;
 
     protected function formCreate()
     {
+        $this->intGalleriesList = Application::instance()->context()->queryStringItem('id');
+        if (strlen($this->intGalleriesList)) {
+            $this->objGalleriesList = ListOfGalleries::load($this->intGalleriesList);
+        }
+
         $this->objGallery = new Q\Plugin\NanoGallery($this);
         $this->objGallery->createNodeParams([$this, 'Gallery_Draw']);
         $this->objGallery->setDataBinder('Gallery_Bind');
+        $this->objGallery->ListDescription = $this->objGalleriesList->Description;
+        $this->objGallery->ListAuthor = $this->objGalleriesList->Author;
 
         $this->objGallery->ItemsBaseURL = $this->objGallery->TempUrl . '/_files';
-        $this->objGallery->ThumbnailWidth = 150;
+        $this->objGallery->ThumbnailWidth = 200;
         $this->objGallery->ThumbnailHeight = 150;
-    }
+        $this->objGallery->ThumbnailBorderVertical = 0;
+        $this->objGallery->ThumbnailBorderHorizontal = 0;
+        $this->objGallery->ThumbnailGutterWidth = 15;
+        $this->objGallery->ThumbnailGutterHeight = 15;
+        $this->objGallery->ThumbnailAlignment = 'center';
+        $this->objGallery->ImageTransition = 'swipe';
+        $this->objGallery->GalleryDisplayMode = 'rows';
+        $this->objGallery->GalleryMaxRows = 1;
+        $this->objGallery->GalleryMaxItems = null;
+        $this->objGallery->ThumbnailLabel = [
+            "position" => "onBottom","display" => false
+        ];
+        $this->objGallery->ViewerToolbar = [
+            "display" => true, "standard"=> "label", "fullWidth" => true, "minimized" =>  "minimizeButton, label, fullscreenButton, downloadButton, infoButton"
+        ];
+        $this->objGallery->ViewerTools = [
+            "topLeft" => "pageCounter",
+            "topRight" => "playPauseButton, zoomButton, rotateLeftButton, rotateRightButton, fullscreenButton, shareButton, downloadButton, closeButton"
+        ];
 
+        $this->objGallery->LocationHash = false;
+
+        $this->lblTitle = new Q\Plugin\Label($this);
+        $this->lblTitle->Text = $this->objGalleriesList->Title;
+        $this->lblTitle->setCssStyle('font-weight', 400);
+        $this->lblTitle->UseWrapper = false;
+
+        $this->btnBack = new Bs\Button($this);
+        $this->btnBack->Text = t('Back');
+        $this->btnBack->CssClass = 'btn btn-default';
+        $this->btnBack->UseWrapper = false;
+        $this->btnBack->addAction(new Q\Event\Click(), new Q\Action\Ajax( 'btnBack_Click'));
+    }
 
     protected function Gallery_Bind()
     {
         $this->objGallery->DataSource = Galleries::QueryArray(
-            QQ::Equal(QQN::Galleries()->ListId, 11));
+            QQ::Equal(QQN::Galleries()->ListId, $this->intGalleriesList));
     }
 
     public function Gallery_Draw(Galleries $objGallery)
@@ -39,7 +84,13 @@ class ExamplesForm extends Form
         $a['path'] = $objGallery->Path;
         $a['description'] = $objGallery->Description;
         $a['author'] = $objGallery->Author;
+        $a['status'] = $objGallery->Status;
         return $a;
+    }
+
+    protected function btnBack_Click(ActionParams $params)
+    {
+        Application::redirect('list.php');
     }
 }
 ExamplesForm::Run('ExamplesForm');

@@ -5,12 +5,7 @@
     /*p, */footer {font-size: medium;}
     footer {margin-top: 35px;}
     footer span {color: #ffffff;}
-   .preview img {
-       height: 70px;
-       width: 70px;
-       object-fit: cover;
-       object-position: 100% 0;
-   }
+
    .gallery-archive ul {
        margin: 0;
        width: 100%;

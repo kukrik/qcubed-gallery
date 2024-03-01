@@ -184,8 +184,8 @@ class PageMetadataPanel extends Q\Control\Panel
         $this->dlgModal1->addAction(new Q\Event\DialogButton(), new Q\Action\AjaxControl($this, 'deletedItem_Click'));
 
         $this->dlgModal2 = new Bs\Modal($this);
-        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Praegu ei saa siin selle artikli metaandmed salvestada.</p><p style="line-height: 25px; margin-bottom: -3px;">
-                                Enne peab artiklit sisuga täitma ja salvestama.</p>');
+        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Currently, it is not possible to save the metadata for this article here.</p><p style="line-height: 25px; margin-bottom: -3px;">
+                                Before, you must fill in and save the article content.</p>');
         $this->dlgModal2->Title = t("Tip");
         $this->dlgModal2->HeaderClasses = 'btn-darkblue';
         $this->dlgModal2->addButton(t("OK"), 'ok', false, false, null,
