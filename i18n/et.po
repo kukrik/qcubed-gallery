@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gallery translation\n"
-"POT-Creation-Date: 2024-03-01 16:36+0200\n"
+"POT-Creation-Date: 2024-03-04 16:56+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tiit Papp <tiit.papp@gmail.com>\n"
 "Language-Team: tiit.papp@gmail.com\n"
@@ -498,8 +498,8 @@ msgid "Failed to resize image"
 msgstr "Pildi suuruse muutmine ebaõnnestus"
 
 #: src/FileHandler.php:130
-msgid "imagejpeg() failed to create and resize the image"
-msgstr "imagejpeg() ei suutnud pilti luua ja selle suurust muuta"
+msgid "The resizeImage() function failed to create and resize the image"
+msgstr "Funktsioon resizeImage() ei suutnud pilti luua ja selle suurust muuta"
 
 #: src/FileHandler.php:131
 msgid "Failed to open stream: No such directory to put into"
@@ -512,3 +512,7 @@ msgstr "Väljundvoo avamine ebaõnnestus"
 #: src/FileHandler.php:133
 msgid "Failed to open input stream"
 msgstr "Sisendvoo avamine ebaõnnestus"
+
+#: src/FileHandler.php:555
+msgid "Unable to deal with image type"
+msgstr "Pilditüübiga ei saa hakkama"

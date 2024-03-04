@@ -3,7 +3,7 @@
 namespace QCubed\Plugin;
 
 /**
- * Class FileUploadHandler
+ * Class FileHandler
  *
  * Note: the "upload" folder must already exist in /project/assets/ and this folder has 777 permissions.
  *
@@ -127,7 +127,7 @@ class FileHandler
             'already_exists' => t('%s already exists'),
             'invalid_image' => t('Invalid image / failed getimagesize()'),
             'failed_to_resize_image' => t('Failed to resize image'),
-            'imagejpeg_failed_to_create_and_resize_the_image' => t('imagejpeg() failed to create and resize the image'),
+            'resizeimage_failed_to_create_and_resize_the_image' => t('The resizeImage() function failed to create and resize the image'),
             'failed_to_open_stream' => t('Failed to open stream: No such directory to put into'),
             'could-not_write_output' => t('Failed to open output stream'),
             'could_not_read_input' => t('Failed to open input stream')
@@ -325,13 +325,21 @@ class FileHandler
     {
         if (is_file($fileName)) {
             $associatedParameters = array_combine($this->options['TempFolders'], $this->options['ResizeDimensions']);
+            $size = getimagesize($fileName);
+
             foreach ($associatedParameters as $tempFolder => $resizeDimension) {
+
                 if ($this->options['DestinationPath'] == null) {
                     $newPath = $this->options['FullStoragePath'] . '/' . $tempFolder . '/' . basename($fileName);
                 } else {
                     $newPath = $this->options['FullStoragePath'] . '/' . $tempFolder . '/' . $this->options['DestinationPath'] . '/' . basename($fileName);
                 }
-                $this->resizeImage($fileName, $newPath, $resizeDimension);
+
+                if ($resizeDimension < $size[0]) {
+                    $this->resizeImage($fileName, $newPath, $resizeDimension);
+                } else {
+                    copy($fileName, $newPath);
+                }
             }
         }
     }
@@ -516,6 +524,10 @@ class FileHandler
 
             // create new $image
             $image = $this->imageCreateFrom($path, $size[2]);
+
+            imageAlphaBlending($newImage, false);
+            imageSaveAlpha($newImage, true);
+
             if (!call_user_func($this->options['ImageResizeFunction'], $newImage, $image, 0, 0, 0, 0, $resizeWidth, $resizeHeight, $size[0], $size[1])) {
                 $this->errorValidity('true', 'failed_to_resize_image', null);
             }
@@ -529,9 +541,21 @@ class FileHandler
             }
 
             if ($this->options['ImageResizeQuality']) {
-                imagejpeg($newImage, $newPath, $this->options['ImageResizeQuality']);
+                switch ($size[2]) {
+                    case IMAGETYPE_JPEG:
+                        imagejpeg($newImage, $newPath, $this->options['ImageResizeQuality']);
+                        break;
+                    case IMAGETYPE_GIF:
+                        imagegif($newImage, $newPath, $this->options['ImageResizeQuality']);
+                        break;
+                    case IMAGETYPE_PNG:
+                        imagepng($newImage, $newPath, floatval($this->options['ImageResizeQuality'] / 100));
+                        break;
+                    default:
+                        throw new Exception(t("Unable to deal with image type"));
+                }
             } else {
-                $this->errorValidity('true', 'imagejpeg_failed_to_create_and_resize_the_image', null);
+                $this->errorValidity('true', 'resizeimage_failed_to_create_and_resize_the_image', null);
             }
 
             // destroy image

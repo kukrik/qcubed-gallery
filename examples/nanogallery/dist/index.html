@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - nanogallery2 - define photo gallery (HTML markup)</title>
+  <link rel='stylesheet' href='../../../assets/nanogallery2/dist/css/nanogallery2.min.css'>
+  <style>
+    body, html {
+      /*background-color: #ebe7e2;*/
+      width: 100%;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      color: #000;
+    }
+  </style>
+
+</head>
+<body>
+
+<!--
+"imageTransition": "swipe2", //default
+Possible values: 'slideAppear', 'swipe', 'swipe2'.
+
+"topRight":   "playPauseButton, zoomButton, rotateLeftButton, rotateRightButton, fullscreenButton, shareButton, downloadButton, closeButton"
+
+Possible tools: 'previousButton', 'nextButton', 'rotateLeft', 'rotateRight', 'pageCounter', 'playPauseButton', 'fullscreenButton', 'infoButton', 'linkOriginalButton', 'closeButton', 'downloadButton', 'zoomButton', 'shareButton', 'label' (image title and description), 'shoppingcart', 'customN'
+To add custom elements in a toolbar, use the label customN, where N is an integer (e.g. custom1, custom2...).
+
+-->
+
+<h3>
+  nanogallery2 - define a photo gallery with the HTML markup method
+</h3>
+
+<!--<div ID="ngy2p" data-nanogallery2='{-->
+
+<div data-nanogallery2 ='{
+    "itemsBaseURL": "http://localhost/qcubed-4/project/tmp/_files",
+        "thumbnailWidth": 150,
+        "thumbnailHeight": 150,
+        "thumbnailBorderVertical": 0,
+  "thumbnailBorderHorizontal": 0,
+  "thumbnailGutterWidth": 15,
+  "thumbnailGutterHeight": 15,
+  "thumbnailAlignment": "center",
+  "imageTransition": "swipe2",
+
+  "galleryDisplayMode": "rows",
+  "galleryMaxRows": 3,
+  "galleryMaxItems": null,
+
+  "displayBreadcrumb": false,
+  "breadcrumbAutoHideTopLevel": false,
+  "breadcrumbOnlyCurrentLevel": false,
+  "thumbnailOpenImage": true,
+
+  "thumbnailLabel": {"position": "overImageOnBottom","display": false},
+  "viewerToolbar":   {"display": true,"standard": "label","fullWidth": true},
+  "viewerTools":     {"topLeft":"pageCounter",
+  "topRight":"playPauseButton, zoomButton, rotateLeftButton, rotateRightButton, fullscreenButton, shareButton, downloadButton, closeButton"}
+
+
+
+      }'>
+
+  <!-- content of the gallery -->
+  <a href="/large/Varia/seinakell.jpg" data-ngthumb="/thumbnail/Varia/seinakell.jpg" data-ngdesc="/Varia/seinakell.jpg"></a>
+  <a href="/large/Varia/Sirle esimene debüüt ERR-is.png" data-ngthumb="/thumbnail/Varia/Sirle esimene debüüt ERR-is.png" data-ngdesc="Sirle esimene debüüt ERR-i viipekeelsetes uudistes">Sirle esimene debüüt ERR-is</a>
+  <a href="/large/Varia/sirlu.jpg" data-ngthumb="/thumbnail/Varia/sirlu.jpg" data-ngdesc="ERR | Kaido Paales">Sirlu poseerib</a>
+
+    <a href="/large/Luik peaga vees.jpg" data-ngthumb="/thumbnail/Luik peaga vees.jpg"></a>
+    <a href="/large/Varia/Tiit pildistab.jpg" data-ngthumb="/thumbnail/Varia/Tiit pildistab.jpg"></a>
+    <a href="/large/file60471593_d5a21f14.jpg" data-ngthumb="/thumbnail/file60471593_d5a21f14.jpg"></a>
+    <a href="/large/Avaleht/test/Luik suures plaanis.jpg" data-ngthumb="/thumbnail/Avaleht/test/Luik suures plaanis.jpg"></a>
+    <a href="/large/DSC_5177_1.jpg" data-ngthumb="/thumbnail/DSC_5177_1.jpg"></a>
+    <a href="/large/Varia/sõbrapäeva küünlad.jpg" data-ngthumb="/thumbnail/Varia/sõbrapäeva küünlad.jpg"></a>
+    <a href="/large/Avaleht/test/valged_orhideed.jpg" data-ngthumb="/thumbnail/Avaleht/test/valged_orhideed.jpg"></a>
+
+  <a href="/large/Luik peaga vees.jpg" data-ngthumb="/thumbnail/Luik peaga vees.jpg"></a>
+  <a href="/large/Varia/Tiit pildistab.jpg" data-ngthumb="/thumbnail/Varia/Tiit pildistab.jpg"></a>
+  <a href="/large/file60471593_d5a21f14.jpg" data-ngthumb="/thumbnail/file60471593_d5a21f14.jpg"></a>
+  <a href="/large/Avaleht/test/Luik suures plaanis.jpg" data-ngthumb="/thumbnail/Avaleht/test/Luik suures plaanis.jpg"></a>
+  <a href="/large/DSC_5177_1.jpg" data-ngthumb="/thumbnail/DSC_5177_1.jpg"></a>
+  <a href="/large/Varia/sõbrapäeva küünlad.jpg" data-ngthumb="/thumbnail/Varia/sõbrapäeva küünlad.jpg"></a>
+  <a href="/large/Avaleht/test/valged_orhideed.jpg" data-ngthumb="/thumbnail/Avaleht/test/valged_orhideed.jpg"></a>
+
+  <a href="/large/Luik peaga vees.jpg" data-ngthumb="/thumbnail/Luik peaga vees.jpg"></a>
+  <a href="/large/Varia/Tiit pildistab.jpg" data-ngthumb="/thumbnail/Varia/Tiit pildistab.jpg"></a>
+  <a href="/large/file60471593_d5a21f14.jpg" data-ngthumb="/thumbnail/file60471593_d5a21f14.jpg"></a>
+  <a href="/large/Avaleht/test/Luik suures plaanis.jpg" data-ngthumb="/thumbnail/Avaleht/test/Luik suures plaanis.jpg"></a>
+  <a href="/large/DSC_5177_1.jpg" data-ngthumb="/thumbnail/DSC_5177_1.jpg"></a>
+  <a href="/large/Varia/sõbrapäeva küünlad.jpg" data-ngthumb="/thumbnail/Varia/sõbrapäeva küünlad.jpg"></a>
+  <a href="/large/Avaleht/test/valged_orhideed.jpg" data-ngthumb="/thumbnail/Avaleht/test/valged_orhideed.jpg"></a>
+
+  <a href="/large/Luik peaga vees.jpg" data-ngthumb="/thumbnail/Luik peaga vees.jpg"></a>
+  <a href="/large/Varia/Tiit pildistab.jpg" data-ngthumb="/thumbnail/Varia/Tiit pildistab.jpg"></a>
+  <a href="/large/file60471593_d5a21f14.jpg" data-ngthumb="/thumbnail/file60471593_d5a21f14.jpg"></a>
+  <a href="/large/Avaleht/test/Luik suures plaanis.jpg" data-ngthumb="/thumbnail//Avaleht/test/Luik suures plaanis.jpg"></a>
+  <a href="/large/DSC_5177_1.jpg" data-ngthumb="/thumbnail/DSC_5177_1.jpg"></a>
+  <a href="/large/Varia/sõbrapäeva küünlad.jpg" data-ngthumb="/thumbnail/Varia/sõbrapäeva küünlad.jpg"></a>
+  <a href="/large/Avaleht/test/valged_orhideed.jpg" data-ngthumb="/thumbnail/Avaleht/test/valged_orhideed.jpg"></a>
+
+
+
+
+
+
+</div>
+
+<!--  "thumbnailBorderVertical": 0,-->
+<!--  "thumbnailBorderHorizontal": 0,-->
+<!--  "thumbnailGutterWidth": 15,-->
+<!--  "thumbnailGutterHeight": 15,-->
+<!--  "thumbnailAlignment": "center",-->
+<!--  "imageTransition": "swipe2",-->
+
+<!--  "galleryDisplayMode": "rows",-->
+<!--  "galleryMaxRows": 3,-->
+<!--  "galleryMaxItems": null,-->
+
+<!--  "displayBreadcrumb": false,-->
+<!--  "breadcrumbAutoHideTopLevel": false,-->
+<!--  "breadcrumbOnlyCurrentLevel": false,-->
+<!--  "thumbnailOpenImage": true,-->
+
+<!--  "thumbnailLabel": {"position": "overImageOnBottom","display": false},-->
+
+<!--  "viewerToolbar":   {"display": true,"standard": "label","fullWidth": true},-->
+
+<!--  "viewerTools":     {"topLeft":"pageCounter",-->
+<!--  "topRight":"playPauseButton, zoomButton, rotateLeftButton, rotateRightButton, fullscreenButton, shareButton, downloadButton, closeButton"}-->
+
+
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+
+<script>
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leiame kõik toolbarContainer elemendid
+    var toolbarContainers = document.querySelectorAll('.toolbarContainer');
+
+    // Läbime iga toolbarContainer
+    toolbarContainers.forEach(function(toolbarContainer) {
+      // Leiame selle div-i lapsed, millel on klassid "description" ja "title"
+      var description = toolbarContainer.querySelector('.description');
+      var title = toolbarContainer.querySelector('.title');
+
+      // Kontrollime, kas mõlemad lapsed on tühjad
+      if (description.textContent.trim() === '' && title.textContent.trim() === '') {
+        // Muudame stiili nähtavust
+        toolbarContainer.style.visibility = 'hidden';
+      } else {
+        // Näitame toolbarContainer'i
+        toolbarContainer.style.visibility = 'visible';
+      }
+    });
+  });
+
+
+  // $(document).ready(function() {
+  //   // Leiame kõik div elemendid klassiga "toolbarContainer"
+  //   var toolbarContainers = $('.toolbarContainer');
+  //
+  //   // Läbime iga toolbarContainer
+  //   toolbarContainers.each(function() {
+  //     // Leiame kõik selle div-i lapsed, millel on klassid "description" ja "title"
+  //     var description = $(this).find('.description');
+  //     var title = $(this).find('.title');
+  //
+  //     // Kontrollime, kas mõlemad lapsed on tühjad
+  //     if (description.text().trim() === '' && title.text().trim() === '') {
+  //       // Muudame stiili visibility: visible; -> visibility: hidden;
+  //       $(this).css('visibility', 'hidden');
+  //     } else {
+  //       // Näitame toolbarContainer'i
+  //       $(this).css('visibility', 'visible');
+  //     }
+  //   });
+  // });
+</script>
+
+<script src='../../../assets/nanogallery2/dist/jquery.nanogallery2.min.js'></script>
+
+</body>
+</html>

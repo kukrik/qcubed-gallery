@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gallery translation\n"
-"POT-Creation-Date: 2024-03-01 16:37+0200\n"
+"POT-Creation-Date: 2024-03-04 16:59+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tiit Papp <tiit.papp@gmail.com>\n"
 "Language-Team: tiit.papp@gmail.com\n"
@@ -502,8 +502,8 @@ msgid "Failed to resize image"
 msgstr "Не удалось изменить размер изображения"
 
 #: src/FileHandler.php:130
-msgid "imagejpeg() failed to create and resize the image"
-msgstr "imagejpeg() не удалось создать и изменить размер изображения"
+msgid "The resizeImage() function failed to create and resize the image"
+msgstr "Функции resizeImage() не удалось создать и изменить размер изображения"
 
 #: src/FileHandler.php:131
 msgid "Failed to open stream: No such directory to put into"
@@ -516,3 +516,7 @@ msgstr "Не удалось открыть выходной поток"
 #: src/FileHandler.php:133
 msgid "Failed to open input stream"
 msgstr "Не удалось открыть входной поток"
+
+#: src/FileHandler.php:555
+msgid "Unable to deal with image type"
+msgstr "Невозможно разобраться с типом изображения"

@@ -26,7 +26,6 @@ and
 
 ```
     composer require kukrik/qcubed-gallery
-    composer require kukrik/qcubed-fileupload
     composer require kukrik/bootstrap
     composer require kukrik/select2
 ```
