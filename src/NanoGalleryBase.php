@@ -207,9 +207,9 @@ class NanoGalleryBase extends Q\Control\Panel
     protected $strListDescription;
     /** @var string */
     protected $strListAuthor;
-    /** @var  callable */
     /** @var array DataSource from which the items are picked and rendered */
     protected $objDataSource;
+    /** @var  callable */
     protected $nodeParamsCallback = null;
 
     /**

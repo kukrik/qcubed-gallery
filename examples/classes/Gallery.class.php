@@ -122,23 +122,23 @@ class Gallery extends Q\Control\Panel
         $this->dtgGalleryList = new Q\Plugin\VauuTable($this);
         $this->dtgGalleryList->CssClass = "table vauu-table table-hover";
 
-        $col = $this->dtgGalleryList->createCallableColumn('View', [$this, 'View_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('View'), [$this, 'View_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '8%';
 
-        $col = $this->dtgGalleryList->createCallableColumn('Name', [$this, 'Name_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('Name'), [$this, 'Name_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '18%';
 
-        $col = $this->dtgGalleryList->createCallableColumn('Author', [$this, 'Author_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('Author'), [$this, 'Author_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '18%';
 
-        $col = $this->dtgGalleryList->createCallableColumn('Description', [$this, 'Description_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('Description'), [$this, 'Description_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '18%';
 
-        $col = $this->dtgGalleryList->createCallableColumn('Status', [$this, 'IsEnabled_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('Status'), [$this, 'IsEnabled_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '20%';
 
@@ -173,7 +173,7 @@ class Gallery extends Q\Control\Panel
     {
         $this->txtTitle = new Bs\TextBox($this);
         $this->txtTitle->Placeholder = t('The title of the gallery');
-        $this->txtTitle->Text = $this->objGalleriesList->Title ? $this->objGalleriesList->Title : null;
+        $this->txtTitle->Text = $this->objGalleriesList->Title ?? null;
         $this->txtTitle->MaxLength = ListOfGalleries::TitleMaxLength;
         $this->txtTitle->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
         $this->txtTitle->setHtmlAttribute('autocomplete', 'off');
@@ -186,7 +186,7 @@ class Gallery extends Q\Control\Panel
 
         $this->txtDescription = new Bs\TextBox($this->dtgGalleryList);
         $this->txtDescription->Placeholder = t('Brief description');
-        $this->txtDescription->Text = $this->objGalleriesList->Description ? $this->objGalleriesList->Description : null;
+        $this->txtDescription->Text = $this->objGalleriesList->Description ??null;
         $this->txtDescription->TextMode = Q\Control\TextBoxBase::MULTI_LINE;
         $this->txtDescription->Rows = 2;
         $this->txtDescription->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
@@ -200,7 +200,7 @@ class Gallery extends Q\Control\Panel
 
         $this->txtAuthor = new Bs\TextBox($this);
         $this->txtAuthor->Placeholder = t("Author's name");
-        $this->txtAuthor->Text = $this->objGalleriesList->Author ? $this->objGalleriesList->Author : null;
+        $this->txtAuthor->Text = $this->objGalleriesList->Author ?? null;
         $this->txtAuthor->MaxLength = ListOfGalleries::TitleMaxLength;
         $this->txtAuthor->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
         $this->txtAuthor->setHtmlAttribute('autocomplete', 'off');
@@ -212,7 +212,7 @@ class Gallery extends Q\Control\Panel
 
         $this->lstStatusGallery = new Q\Plugin\RadioList($this);
         $this->lstStatusGallery->addItems([1 => t('Publiched'), 2 => t('Hidden')]);
-        $this->lstStatusGallery->SelectedValue = $this->objGalleriesList->Status ? $this->objGalleriesList->Status : null;
+        $this->lstStatusGallery->SelectedValue = $this->objGalleriesList->Status ?? null;
         $this->lstStatusGallery->ButtonGroupClass = 'radio radio-orange radio-inline';
         $this->lstStatusGallery->setCssStyle('float', 'left');
         $this->lstStatusGallery->setCssStyle('margin-right', '30px');
@@ -355,8 +355,8 @@ class Gallery extends Q\Control\Panel
         $this->dlgModal2->addCloseButton(t("I understand"));
 
         $this->dlgModal3 = new Bs\Modal($this);
-        $this->dlgModal3->Text = '<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this file?</p>
-                                <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>';
+        $this->dlgModal3->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this file?</p>
+                                <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>');
         $this->dlgModal3->Title = 'Warning';
         $this->dlgModal3->HeaderClasses = 'btn-danger';
         $this->dlgModal3->addButton("I accept", 'This file has been permanently deleted', false, false, null,
@@ -377,8 +377,8 @@ class Gallery extends Q\Control\Panel
         $this->dlgModal5->addCloseButton(t("I understand"));
 
         $this->dlgModal6 = new Bs\Modal($this);
-        $this->dlgModal6->Text = '<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this gallery?</p>
-                                <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>';
+        $this->dlgModal6->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this gallery?</p>
+                                <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>');
         $this->dlgModal6->Title = 'Warning';
         $this->dlgModal6->HeaderClasses = 'btn-danger';
         $this->dlgModal6->addButton("I accept", 'This file has been permanently deleted', false, false, null,

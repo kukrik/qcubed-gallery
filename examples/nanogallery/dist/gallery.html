@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link href="/qcubed-4/vendor/kukrik/qcubed-gallery/assets/nanogallery2/src/css/nanogallery2.css" rel="stylesheet" />
+
+    <style>
+        body, html {
+            /*background-color: #ebe7e2;*/
+            width: 100%;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            color: #000;
+        }
+
+        .nanogallery_viewertheme_dark_my_nanogallery .nGY2Viewer .toolbar .label .title {
+            /*color: #ffffff;*/
+            color: #ffCC00 !important;
+        }
+        .nGY2 .toolbar .label .title {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: auto;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        /*.nanogallery_viewertheme_dark_ngy2p .nGY2Viewer .toolbar .label .description {*/
+        /*  color: #ffffff !important;*/
+        /*}*/
+        .nGY2 .toolbar .label .description {
+            color: #ffffff !important;
+            font-size: 16px;
+            line-height: 1.5;
+            display: table-row;
+            vertical-align: middle;
+            overflow: hidden;
+
+        }
+
+        .nanogallery_viewertheme_dark_my_nanogallery .nGY2Viewer .toolbarBackground {
+            background: rgba(0, 0, 0, 0.50) !important;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="c1"></div>
+
+<div id="my_nanogallery2"></div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="/qcubed-4/vendor/kukrik/qcubed-gallery/assets/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
+
+<script>
+
+    jQuery(document).ready(function () {
+        jQuery("#my_nanogallery2").nanogallery2({
+            "items":[
+                { src: 'berlin1.jpg', srct: 'berlin1t.jpg', title: 'Berlin 1' },
+                { src: 'berlin2.jpg', srct: 'berlin2t.jpg', title: 'Berlin 2' },
+                { src: 'berlin3.jpg', srct: 'berlin3t.jpg', title: 'Berlin 3' }
+            ],
+            thumbnailWidth:  'auto',
+            thumbnailHeight: 100,
+            itemsBaseURL:    'https://nanogallery2.nanostudio.org/samples/',
+
+            locationHash:    false
+        });
+    });
+
+  $(document).ready(function () {
+
+      // jQuery("#c1").nanogallery2(
+      //     {
+      //         "itemsBaseURL": "\/qcubed-4\/project\/tmp\/_files",
+      //         "thumbnailWidth": 150,
+      //         "thumbnailHeight": 150,
+      //         "items": "[{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/allkiri.png\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/allkiri.png\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/4686233863_aeb72a24df_b.jpg\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/4686233863_aeb72a24df_b.jpg\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_0084.JPG\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_0084.JPG\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_5177_1.jpg\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_5177_1.jpg\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_5197_1.jpg\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/DSC_5197_1.jpg\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/file60471593_d5a21f14.jpg\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/file60471593_d5a21f14.jpg\",\"title\":\"\",\"descripton\":\"\"},{\"src\":\"\\\/large\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/f_DSC01660.jpg\",\"srct\":\"\\\/thumbnail\\\/galerii\\\/sugisene-treeningulaager-joulumae-tervisekeskuses\\\/f_DSC01660.jpg\",\"title\":\"\",\"descripton\":\"\"}]"});
+
+
+
+    $("#c1").nanogallery2(
+            {"itemsBaseURL": "http://localhost/qcubed-4/project/tmp/_files",
+      "items": [{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/allkiri.png","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/allkiri.png","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/4686233863_aeb72a24df_b.jpg","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/4686233863_aeb72a24df_b.jpg","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_0084.JPG","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_0084.JPG","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_5177_1.jpg","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_5177_1.jpg","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_5197_1.jpg","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/DSC_5197_1.jpg","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/file60471593_d5a21f14.jpg","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/file60471593_d5a21f14.jpg","title":"","descripton":""},{"src":"\/large\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/f_DSC01660.jpg","srct":"\/thumbnail\/galerii\/sugisene-treeningulaager-joulumae-tervisekeskuses\/f_DSC01660.jpg","title":"","descripton":""}]
+  });
+  //
+  });
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
