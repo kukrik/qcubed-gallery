@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gallery translation\n"
-"POT-Creation-Date: 2024-03-27 12:14+0200\n"
+"POT-Creation-Date: 2024-03-27 12:52+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tiit Papp <tiit.papp@gmail.com>\n"
 "Language-Team: tiit.papp@gmail.com\n"
@@ -499,8 +499,8 @@ msgid "Gallery"
 msgstr "Galerii"
 
 #: examples/gallery_list.php:34
-msgid "Galleries list"
-msgstr "Galeriide loend"
+msgid "Albums list"
+msgstr "Albumite loend"
 
 #: examples/gallery_list.php:37
 msgid "Gallery settings"
@@ -596,6 +596,9 @@ msgstr "Sisendvoo avamine ebaõnnestus"
 #: src/FileHandler.php:589
 msgid "Unable to deal with image type"
 msgstr "Pilditüübiga ei saa hakkama"
+
+#~ msgid "Galleries list"
+#~ msgstr "Galeriide loend"
 
 #~ msgid ""
 #~ "<p style=\"line-height: 25px; margin-bottom: 2px;\">Cannot create a "

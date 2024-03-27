@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Gallery translation\n"
-"POT-Creation-Date: 2024-03-27 12:15+0200\n"
+"POT-Creation-Date: 2024-03-27 12:51+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tiit Papp <tiit.papp@gmail.com>\n"
 "Language-Team: tiit.papp@gmail.com\n"
@@ -506,8 +506,8 @@ msgid "Gallery"
 msgstr "Gallery"
 
 #: examples/gallery_list.php:34
-msgid "Galleries list"
-msgstr "Galleries list"
+msgid "Albums list"
+msgstr "Albums list"
 
 #: examples/gallery_list.php:37
 msgid "Gallery settings"
@@ -604,6 +604,9 @@ msgstr "Failed to open input stream"
 #: src/FileHandler.php:589
 msgid "Unable to deal with image type"
 msgstr "Unable to deal with image type"
+
+#~ msgid "Galleries list"
+#~ msgstr "Galleries list"
 
 #~ msgid ""
 #~ "<p style=\"line-height: 25px; margin-bottom: 2px;\">Cannot create a "

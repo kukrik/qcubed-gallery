@@ -31,7 +31,7 @@ class SampleForm extends Form
         $this->nav->addCssClass('tabbable tabbable-custom');
 
         $pnlGalleriesList = new GalleryList($this->nav);
-        $pnlGalleriesList->Name = t('Galleries list');
+        $pnlGalleriesList->Name = t('Albums list');
 
         $pnlGallerySettings = new GallerySettings($this->nav);
         $pnlGallerySettings->Name = t('Gallery settings');
