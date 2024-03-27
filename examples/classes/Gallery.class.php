@@ -354,7 +354,7 @@ class Gallery extends Q\Control\Panel
                                 <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>');
         $this->dlgModal3->Title = 'Warning';
         $this->dlgModal3->HeaderClasses = 'btn-danger';
-        $this->dlgModal3->addButton("I accept", 'This file has been permanently deleted', false, false, null,
+        $this->dlgModal3->addButton(t("I accept"), 'This file has been permanently deleted', false, false, null,
             ['class' => 'btn btn-orange']);
         $this->dlgModal3->addCloseButton(t("I'll cancel"));
         $this->dlgModal3->addAction(new \QCubed\Event\DialogButton(), new \QCubed\Action\AjaxControl($this, 'deleteItem_Click'));
@@ -376,7 +376,7 @@ class Gallery extends Q\Control\Panel
                                 <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>');
         $this->dlgModal6->Title = 'Warning';
         $this->dlgModal6->HeaderClasses = 'btn-danger';
-        $this->dlgModal6->addButton("I accept", 'This file has been permanently deleted', false, false, null,
+        $this->dlgModal6->addButton(t("I accept"), 'This file has been permanently deleted', false, false, null,
             ['class' => 'btn btn-orange']);
         $this->dlgModal6->addCloseButton(t("I'll cancel"));
         $this->dlgModal6->addAction(new \QCubed\Event\DialogButton(), new \QCubed\Action\AjaxControl($this, 'deleteGallery_Click'));
@@ -834,7 +834,7 @@ class Gallery extends Q\Control\Panel
             $btnDelete = $this->Form->getControl($btnDeleteId);
             if (!$btnDelete) {
                 $btnDelete = new Bs\Button($this->dtgGalleryList, $btnDeleteId);
-                $btnDelete->Text = 'Delete';
+                $btnDelete->Text = t('Delete');
                 $btnDelete->ActionParameter = $objGalleries->Id;
                 $btnDelete->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnDelete_Click'));
                 $btnDelete->CausesValidation = false;
