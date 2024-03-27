@@ -4,7 +4,6 @@ require('qcubed.inc.php');
 require('classes/Gallery.class.php');
 require('classes/GalleryList.class.php');
 require('classes/GallerySettings.class.php');
-require('tables/GallerySettingsTable.php');
 
 error_reporting(E_ALL); // Error engine - always ON!
 ini_set('display_errors', TRUE); // Error display - OFF in production env or real server

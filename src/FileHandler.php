@@ -256,12 +256,7 @@ class FileHandler
 
         clearstatcache();
 
-        $ext = strtolower(pathinfo($this->options['FileName'], PATHINFO_EXTENSION));
-
-        if (in_array($ext, self::getImageExtensions())) {
-            $this->resizeImageProcess($this->options['FileName']);
-        }
-
+        $this->resizeImageProcess($this->options['FileName']);
         $this->uploadInfo();
     }
 
@@ -292,13 +287,7 @@ class FileHandler
 
         if ($this->chunk == $this->chunks) {
             rename($this->options['FileName'] . ".part", $this->options['FileName']);
-
-            $ext = strtolower(pathinfo($this->options['FileName'], PATHINFO_EXTENSION));
-
-            if (in_array($ext, self::getImageExtensions())) {
-                $this->resizeImageProcess($this->options['FileName']);
-            }
-
+            $this->resizeImageProcess($this->options['FileName']);
             $this->uploadInfo();
         }
     }
@@ -371,7 +360,9 @@ class FileHandler
             'error' => $this->options['FileError'],
             'size' => $this->options['FileSize'],
             'mtime' => filemtime($this->options['FileName']),
-            'dimensions' => $this->getDimensions($this->options['FileName'])
+            'dimensions' => $this->getDimensions($this->options['FileName']),
+            'width' => $this->getImageWidth($this->options['FileName']),
+            'height' => $this->getImageHeight($this->options['FileName'])
         ));
     }
 
@@ -404,7 +395,7 @@ class FileHandler
      */
     public static function getMimeType($path)
     {
-        if(function_exists('mime_content_type')){
+        if(function_exists('mime_content_type')) {
             return mime_content_type($path);
         } else {
             return function_exists('finfo_file') ? finfo_file(finfo_open(FILEINFO_MIME_TYPE), $path) : false;
@@ -421,14 +412,46 @@ class FileHandler
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
         $ImageSize = getimagesize($path);
 
-        if (in_array($ext, self::getImageExtensions()))
-        {
+        if (in_array($ext, self::getImageExtensions())) {
             $width = (isset($ImageSize[0]) ? $ImageSize[0] : '0');
             $height = (isset($ImageSize[1]) ? $ImageSize[1] : '0');
             $dimensions = $width . ' x ' . $height;
             return $dimensions;
         }
     }
+
+    /**
+     * Get width of an image
+     * @param string $path
+     * @return mixed|string
+     */
+    public static function getImageWidth($path)
+    {
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $ImageSize = getimagesize($path);
+
+        if (in_array($ext, self::getImageExtensions())) {
+            $width = (isset($ImageSize[0]) ? $ImageSize[0] : '0');
+            return $width;
+        }
+    }
+
+    /**
+     * Get height of an image
+     * @param string $path
+     * @return mixed|string
+     */
+    public static function getImageHeight($path)
+    {
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $ImageSize = getimagesize($path);
+
+        if (in_array($ext, self::getImageExtensions())) {
+            $height = (isset($ImageSize[1]) ? $ImageSize[1] : '0');
+            return $height;
+        }
+    }
+
 
     /**
      * Get image files extensions

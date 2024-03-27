@@ -11,7 +11,7 @@
  Target Server Version : 80030
  File Encoding         : 65001
 
- Date: 19/02/2024 18:28:22
+ Date: 27/03/2024 11:23:32
 */
 
 SET NAMES utf8mb4;
@@ -38,8 +38,9 @@ CREATE TABLE `galleries` (
   KEY `status_idx` (`status`) USING BTREE,
   KEY `folder_id_idx` (`folder_id`) USING BTREE,
   KEY `list_id_idx` (`list_id`) USING BTREE,
-  KEY `id_idx` (`id`) USING BTREE,
+  KEY `id` (`id`,`status`),
+  CONSTRAINT `list_id_galleries_ibfk` FOREIGN KEY (`list_id`) REFERENCES `list_of_galleries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `status_galleries_ibfk` FOREIGN KEY (`status`) REFERENCES `status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;

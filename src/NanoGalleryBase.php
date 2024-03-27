@@ -201,12 +201,6 @@ class NanoGalleryBase extends Q\Control\Panel
 
     /** @var string */
     protected $strTempUrl = APP_UPLOADS_TEMP_URL;
-    /** @var string */
-    protected $strListTitle;
-    /** @var string */
-    protected $strListDescription;
-    /** @var string */
-    protected $strListAuthor;
     /** @var array DataSource from which the items are picked and rendered */
     protected $objDataSource;
     /** @var  callable */
@@ -247,7 +241,7 @@ class NanoGalleryBase extends Q\Control\Panel
     }
 
     /**
-     * Uses HTML callback to get each loop in the original array. Relies on the NodeParamsCallback
+     * Uses HTML callback to get each loop in the original array. Relies on the nodeParamsCallback
      * to return information on how to draw each node.
      *
      * @param mixed $objItem
@@ -261,6 +255,14 @@ class NanoGalleryBase extends Q\Control\Panel
         }
         $params = call_user_func($this->nodeParamsCallback, $objItem);
 
+        $strListDescription = '';
+        if (isset($params['list_description'])) {
+            $strListDescription = $params['list_description'];
+        }
+        $strListAuthor = '';
+        if (isset($params['list_author'])) {
+            $strListAuthor = $params['list_author'];
+        }
         $strPath = '';
         if (isset($params['path'])) {
             $strPath = $params['path'];
@@ -279,6 +281,8 @@ class NanoGalleryBase extends Q\Control\Panel
         }
 
         $vars = [
+            'list_descripton' => $strListDescription,
+            'list_author' => $strListAuthor,
             'path' => $strPath,
             'descripton' => $strDescription,
             'author' => $strAuthor,
@@ -355,6 +359,8 @@ class NanoGalleryBase extends Q\Control\Panel
         $strHtml = '';
 
         for ($i = 0; $i < count($arrParams); $i++) {
+            $strListDescripton = $arrParams[$i]['list_descripton'];
+            $strListAuthor = $arrParams[$i]['list_author'];
             $strPath = $arrParams[$i]['path'];
             $strDescripton = $arrParams[$i]['descripton'];
             $strAuthor = $arrParams[$i]['author'];
@@ -366,16 +372,16 @@ class NanoGalleryBase extends Q\Control\Panel
                 $strHtml .= ' data-ngthumb="';
                 $strHtml .= '/thumbnail' . $strPath . '"';
 
-                if ($strAuthor || (!$strAuthor && $this->strListAuthor)) {
+                if ($strAuthor || $strListAuthor) {
                     $strHtml .= ' data-ngdesc="';
-                    $strHtml .= $strAuthor ? $strAuthor : $this->strListAuthor;
+                    $strHtml .= $strAuthor ? $strAuthor : $strListAuthor;
                     $strHtml .= '">';
                 } else {
                     $strHtml .= '>';
                 }
 
-                if ($strDescripton || (!$strDescripton && $this->strListDescription)) {
-                    $strHtml .= $strDescripton ? $strDescripton : $this->strListDescription;
+                if ($strDescripton || $strListDescripton) {
+                    $strHtml .= $strDescripton ? $strDescripton : $strListDescripton;
                 }
                 $strHtml .= '</a>';
             } else {
@@ -457,9 +463,6 @@ class NanoGalleryBase extends Q\Control\Panel
             case 'AllowHTMLinData': return $this->blnAllowHTMLinData;
 
             case "TempUrl": return $this->strTempUrl;
-            case "ListTitle": return $this->strListTitle;
-            case "ListDescription": return $this->strListDescription;
-            case "ListAuthor": return $this->strListAuthor;
             case "DataSource": return $this->objDataSource;
 
             default:
@@ -705,33 +708,6 @@ class NanoGalleryBase extends Q\Control\Panel
             case "TempUrl":
                 try {
                     $this->strTempUrl = Type::Cast($mixValue, Type::STRING);
-                    $this->blnModified = true;
-                    break;
-                } catch (InvalidCast $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-            case "ListTitle":
-                try {
-                    $this->strListTitle = Type::Cast($mixValue, Type::STRING);
-                    $this->blnModified = true;
-                    break;
-                } catch (InvalidCast $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-            case "ListDescription":
-                try {
-                    $this->strListDescription = Type::Cast($mixValue, Type::STRING);
-                    $this->blnModified = true;
-                    break;
-                } catch (InvalidCast $objExc) {
-                    $objExc->IncrementOffset();
-                    throw $objExc;
-                }
-            case "ListAuthor":
-                try {
-                    $this->strListAuthor = Type::Cast($mixValue, Type::STRING);
                     $this->blnModified = true;
                     break;
                 } catch (InvalidCast $objExc) {

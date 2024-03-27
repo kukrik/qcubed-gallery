@@ -1,14 +1,11 @@
 <?php
-
-use QCubed\Query\QQ;
-
-require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
+	require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesListGen.php');
 
 	/**
-	 * The Galleries class defined here contains any
-	 * customized code for the Galleries class in the
-	 * Object Relational Model.  It represents the "galleries" table
-	 * in the database, and extends from the code generated abstract GalleriesGen
+	 * The GalleriesList class defined here contains any
+	 * customized code for the GalleriesList class in the
+	 * Object Relational Model.  It represents the "galleries_list" table
+	 * in the database, and extends from the code generated abstract GalleriesListGen
 	 * class, which contains all the basic CRUD-type functionality as well as
 	 * basic methods to handle relationships and index-based loading.
 	 *
@@ -16,7 +13,7 @@ require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
 	 * @subpackage Model
 	 *
 	 */
-	class Galleries extends GalleriesGen {
+	class GalleriesList extends GalleriesListGen {
 		/**
 		 * Default "to string" handler
 		 * Allows pages to _p()/echo()/print() this object, and to define the default
@@ -28,57 +25,39 @@ require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
 			return $this->PrimaryKey();
 		}
 
-        /**
-         * Count Gallerieses
-         * by ListId Index(es)
-         * @param integer $intListId
-         * @return int
-         */
-        public static function countByListGalleryId($intListId, $intStatus)
-        {
-            // Call Galleries::QueryCount to perform the CountByListId query
-
-            return Galleries::QueryCount(
-                QQ::AndCondition(
-                    QQ::notEqual(QQN::Galleries()->Status, $intStatus),
-                    QQ::Equal(QQN::Galleries()->ListId, $intListId)
-                )
-            );
-        }
-
 
 		// Override or Create New Load/Count methods
 		// (For obvious reasons, these methods are commented out...
 		// but feel free to use these as a starting point)
 /*
 		public static function LoadArrayBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-			// This will return an array of Galleries objects
-			return Galleries::QueryArray(
+			// This will return an array of GalleriesList objects
+			return GalleriesList::QueryArray(
 				QQ::AndCondition(
-					QQ::Equal(QQN::Galleries()->Param1, $strParam1),
-					QQ::GreaterThan(QQN::Galleries()->Param2, $intParam2)
+					QQ::Equal(QQN::GalleriesList()->Param1, $strParam1),
+					QQ::GreaterThan(QQN::GalleriesList()->Param2, $intParam2)
 				),
 				$objOptionalClauses
 			);
 		}
 
 		public static function LoadBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-			// This will return a single Galleries object
-			return Galleries::QuerySingle(
+			// This will return a single GalleriesList object
+			return GalleriesList::QuerySingle(
 				QQ::AndCondition(
-					QQ::Equal(QQN::Galleries()->Param1, $strParam1),
-					QQ::GreaterThan(QQN::Galleries()->Param2, $intParam2)
+					QQ::Equal(QQN::GalleriesList()->Param1, $strParam1),
+					QQ::GreaterThan(QQN::GalleriesList()->Param2, $intParam2)
 				),
 				$objOptionalClauses
 			);
 		}
 
 		public static function CountBySample($strParam1, $intParam2, $objOptionalClauses = null) {
-			// This will return a count of Galleries objects
-			return Galleries::QueryCount(
+			// This will return a count of GalleriesList objects
+			return GalleriesList::QueryCount(
 				QQ::AndCondition(
-					QQ::Equal(QQN::Galleries()->Param1, $strParam1),
-					QQ::Equal(QQN::Galleries()->Param2, $intParam2)
+					QQ::Equal(QQN::GalleriesList()->Param1, $strParam1),
+					QQ::Equal(QQN::GalleriesList()->Param2, $intParam2)
 				),
 				$objOptionalClauses
 			);
@@ -88,7 +67,7 @@ require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
 			// Performing the load manually (instead of using QCubed Query)
 
 			// Get the Database Object for this Class
-			$objDatabase = Galleries::GetDatabase();
+			$objDatabase = GalleriesList::GetDatabase();
 
 			// Properly Escape All Input Parameters using Database->SqlVariable()
 			$strParam1 = $objDatabase->SqlVariable($strParam1);
@@ -97,9 +76,9 @@ require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
 			// Setup the SQL Query
 			$strQuery = sprintf('
 				SELECT
-					`galleries`.*
+					`galleries_list`.*
 				FROM
-					`galleries` AS `galleries`
+					`galleries_list` AS `galleries_list`
 				WHERE
 					param_1 = %s AND
 					param_2 < %s',
@@ -107,7 +86,7 @@ require(QCUBED_PROJECT_MODEL_GEN_DIR . '/GalleriesGen.php');
 
 			// Perform the Query and Instantiate the Result
 			$objDbResult = $objDatabase->Query($strQuery);
-			return Galleries::InstantiateDbResult($objDbResult);
+			return GalleriesList::InstantiateDbResult($objDbResult);
 		}
 */
 

@@ -1,7 +1,7 @@
 <div class="form-horizontal">
     <div class="row">
         <div class="buttons-heading">
-            <?= _r($this->btnAddGallery); ?>
+            <?= _r($this->btnAddAlbum); ?>
             <?= _r($this->txtTitle); ?>
             <?= _r($this->btnSave); ?>
             <?= _r($this->btnCancel); ?>

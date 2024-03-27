@@ -31,10 +31,8 @@ class ExamplesForm extends Form
         }
 
         $this->objGallery = new Q\Plugin\NanoGallery($this);
-        $this->objGallery->createNodeParams([$this, 'Gallery_Draw']);
-        $this->objGallery->setDataBinder('Gallery_Bind');
-        $this->objGallery->ListDescription = $this->objGalleriesList->Description;
-        $this->objGallery->ListAuthor = $this->objGalleriesList->Author;
+        $this->objGallery->createNodeParams([$this, 'GalleriesList_Draw']);
+        $this->objGallery->setDataBinder('GalleriesList_Bind');
 
         $this->objGallery->ItemsBaseURL = $this->objGallery->TempUrl . '/_files';
         $this->objGallery->ThumbnailWidth = 200;
@@ -73,18 +71,22 @@ class ExamplesForm extends Form
         $this->btnBack->addAction(new Q\Event\Click(), new Q\Action\Ajax( 'btnBack_Click'));
     }
 
-    protected function Gallery_Bind()
+    protected function GalleriesList_Bind()
     {
-        $this->objGallery->DataSource = Galleries::QueryArray(
-            QQ::Equal(QQN::Galleries()->ListId, $this->intGalleriesList));
+        $this->objGallery->DataSource = ListOfGalleries::queryArray(
+            QQ::Equal(QQN::ListOfGalleries()->Id, $this->intGalleriesList),
+            QQ::clause(QQ::expand(QQN::ListOfGalleries()->GalleriesAsList))
+        );
     }
 
-    public function Gallery_Draw(Galleries $objGallery)
+    public function GalleriesList_Draw(ListOfGalleries $objList)
     {
-        $a['path'] = $objGallery->Path;
-        $a['description'] = $objGallery->Description;
-        $a['author'] = $objGallery->Author;
-        $a['status'] = $objGallery->Status;
+        $a['list_description'] = $objList->ListDescription;
+        $a['list_author'] = $objList->ListAuthor;
+        $a['path'] = $objList->_GalleriesAsList->Path;
+        $a['description'] = $objList->_GalleriesAsList->Description;
+        $a['author'] = $objList->_GalleriesAsList->Author;
+        $a['status'] = $objList->_GalleriesAsList->Status;
         return $a;
     }
 

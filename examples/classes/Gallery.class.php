@@ -22,6 +22,7 @@ use QCubed\QString;
 
 class Gallery extends Q\Control\Panel
 {
+    /** @var string */
     protected $strRootPath = APP_UPLOADS_DIR;
     /** @var string */
     protected $strRootUrl = APP_UPLOADS_URL;
@@ -41,6 +42,9 @@ class Gallery extends Q\Control\Panel
     public $dlgModal4;
     public $dlgModal5;
     public $dlgModal6;
+    public $dlgModal7;
+    public $dlgModal8;
+    public $dlgModal9;
     public $dlgToastr1;
     public $dlgToastr2;
     public $dlgToastr3;
@@ -55,7 +59,7 @@ class Gallery extends Q\Control\Panel
     public $btnAllStart;
     public $btnAllCancel;
     public $btnDone;
-    public $btnGalleriesBack;
+    public $btnBackToList;
 
     protected $dtgGalleryList;
     protected $lstItemsPerPage;
@@ -81,7 +85,6 @@ class Gallery extends Q\Control\Panel
     protected $objGalleriesList;
     protected $objAlbum;
     protected $objFolder;
-    protected $oldCount;
     protected $oldPath;
     protected $intChangeFilesId = null;
     protected $intDeleteId = null;
@@ -134,7 +137,7 @@ class Gallery extends Q\Control\Panel
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '18%';
 
-        $col = $this->dtgGalleryList->createCallableColumn(t('Description'), [$this, 'Description_render']);
+        $col = $this->dtgGalleryList->createCallableColumn(t('Brief description'), [$this, 'Description_render']);
         $col->HtmlEntities = false;
         $col->CellStyler->Width = '18%';
 
@@ -152,7 +155,6 @@ class Gallery extends Q\Control\Panel
         $this->dtgGalleryList->ItemsPerPage = 10;
 
         $this->dtgGalleryList->SortColumnIndex = 1;
-        //$this->dtgGalleryList->SortDirection = -1;
         $this->dtgGalleryList->UseAjax = true;
         $this->dtgGalleryList->setDataBinder('dtgGalleryList_Bind', $this);
 
@@ -172,7 +174,7 @@ class Gallery extends Q\Control\Panel
     protected function createInputs()
     {
         $this->txtTitle = new Bs\TextBox($this);
-        $this->txtTitle->Placeholder = t('The title of the gallery');
+        $this->txtTitle->Placeholder = t('The title of the album');
         $this->txtTitle->Text = $this->objGalleriesList->Title ?? null;
         $this->txtTitle->MaxLength = ListOfGalleries::TitleMaxLength;
         $this->txtTitle->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
@@ -184,38 +186,31 @@ class Gallery extends Q\Control\Panel
         $this->txtTitle->AddAction(new Q\Event\EnterKey(), new Q\Action\AjaxControl($this,'btnListUpdate_Click'));
         $this->txtTitle->addAction(new Q\Event\EnterKey(), new Q\Action\Terminate());
 
-        $this->txtDescription = new Bs\TextBox($this->dtgGalleryList);
-        $this->txtDescription->Placeholder = t('Brief description');
-        $this->txtDescription->Text = $this->objGalleriesList->Description ??null;
-        $this->txtDescription->TextMode = Q\Control\TextBoxBase::MULTI_LINE;
-        $this->txtDescription->Rows = 2;
-        $this->txtDescription->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
-        $this->txtDescription->setHtmlAttribute('autocomplete', 'off');
-        $this->txtDescription->setHtmlAttribute('required', 'required');
-        $this->txtDescription->setCssStyle('float', 'left');
-        $this->txtDescription->setCssStyle('margin-right', '10px');
-        $this->txtDescription->Width = '20%';
-        $this->txtDescription->AddAction(new Q\Event\EnterKey(), new Q\Action\AjaxControl($this,'btnListUpdate_Click'));
-        $this->txtDescription->addAction(new Q\Event\EnterKey(), new Q\Action\Terminate());
-
         $this->txtAuthor = new Bs\TextBox($this);
         $this->txtAuthor->Placeholder = t("Author's name");
-        $this->txtAuthor->Text = $this->objGalleriesList->Author ?? null;
+        $this->txtAuthor->Text = $this->objGalleriesList->ListAuthor ?? null;
         $this->txtAuthor->MaxLength = ListOfGalleries::TitleMaxLength;
         $this->txtAuthor->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
         $this->txtAuthor->setHtmlAttribute('autocomplete', 'off');
         $this->txtAuthor->setCssStyle('float', 'left');
-        $this->txtAuthor->setCssStyle('margin-right', '30px');
+        $this->txtAuthor->setCssStyle('margin-right', '10px');
         $this->txtAuthor->Width = '20%';
-        $this->txtAuthor->AddAction(new Q\Event\EnterKey(), new Q\Action\AjaxControl($this,'btnListUpdate_Click'));
-        $this->txtAuthor->addAction(new Q\Event\EnterKey(), new Q\Action\Terminate());
+
+        $this->txtDescription = new Bs\TextBox($this);
+        $this->txtDescription->Placeholder = t('Brief description');
+        $this->txtDescription->Text = $this->objGalleriesList->ListDescription ?? null;
+        $this->txtDescription->CrossScripting = Bs\TextBox::XSS_HTML_PURIFIER;
+        $this->txtDescription->setHtmlAttribute('autocomplete', 'off');
+        $this->txtDescription->setCssStyle('float', 'left');
+        $this->txtDescription->setCssStyle('margin-left', '10px');
+        $this->txtDescription->Width = '30%';
 
         $this->lstStatusGallery = new Q\Plugin\RadioList($this);
         $this->lstStatusGallery->addItems([1 => t('Publiched'), 2 => t('Hidden')]);
         $this->lstStatusGallery->SelectedValue = $this->objGalleriesList->Status ?? null;
         $this->lstStatusGallery->ButtonGroupClass = 'radio radio-orange radio-inline';
         $this->lstStatusGallery->setCssStyle('float', 'left');
-        $this->lstStatusGallery->setCssStyle('margin-right', '30px');
+        $this->lstStatusGallery->setCssStyle('margin-left', '30px');
 
         $this->txtFileName = new Bs\TextBox($this->dtgGalleryList);
         $this->txtFileName->setHtmlAttribute('required', 'required');
@@ -243,7 +238,6 @@ class Gallery extends Q\Control\Panel
         $this->btnAddFiles->CssClass = 'btn btn-orange fileinput-button';
         $this->btnAddFiles->setCssStyle('float', 'left');
         $this->btnAddFiles->setCssStyle('margin-right', '10px');
-        $this->btnAddFiles->addWrapperCssClass('center-button');
         $this->btnAddFiles->UseWrapper = false;
         $this->btnAddFiles->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'uploadStart_Click'));
 
@@ -252,7 +246,6 @@ class Gallery extends Q\Control\Panel
         $this->btnAllStart->CssClass = 'btn btn-darkblue all-start disabled';
         $this->btnAllStart->setCssStyle('float', 'left');
         $this->btnAllStart->setCssStyle('margin-right', '10px');
-        $this->btnAllStart->addWrapperCssClass('center-button');
         $this->btnAllStart->PrimaryButton = true;
         $this->btnAllStart->UseWrapper = false;
 
@@ -261,7 +254,6 @@ class Gallery extends Q\Control\Panel
         $this->btnAllCancel->CssClass = 'btn btn-warning all-cancel disabled';
         $this->btnAllCancel->setCssStyle('float', 'left');
         $this->btnAllCancel->setCssStyle('margin-right', '10px');
-        $this->btnAllCancel->addWrapperCssClass('center-button');
         $this->btnAllCancel->UseWrapper = false;
 
         $this->btnDone = new Bs\Button($this);
@@ -270,21 +262,11 @@ class Gallery extends Q\Control\Panel
         $this->btnDone->UseWrapper = false;
         $this->btnDone->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnDone_Click'));
 
-        $this->btnGalleriesBack = new Bs\Button($this);
-        $this->btnGalleriesBack->Text = t('Back to list');
-        $this->btnGalleriesBack->CssClass = 'btn btn-default back-to-list';
-        $this->btnGalleriesBack->setCssStyle('float', 'left');
-        $this->btnGalleriesBack->setCssStyle('margin-right', '10px');
-        $this->btnGalleriesBack->addWrapperCssClass('center-button');
-        $this->btnGalleriesBack->UseWrapper = false;
-        $this->btnGalleriesBack->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this,'btnListBack_Click'));
-
         $this->btnListUpdate = new Q\Plugin\Button($this);
         $this->btnListUpdate->Text = t('Update');
         $this->btnListUpdate->CssClass = 'btn btn-orange';
-        $this->btnListUpdate->setCssStyle('float', 'left');
-        $this->btnListUpdate->setCssStyle('margin-right', '10px');
-        $this->btnListUpdate->addWrapperCssClass('center-button');
+        $this->btnListUpdate->setCssStyle('float', 'right');
+        $this->btnListUpdate->setCssStyle('margin-left', '10px');
         $this->btnListUpdate->PrimaryButton = true;
         $this->btnListUpdate->CausesValidation = true;
         $this->btnListUpdate->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this,'btnListUpdate_Click'));
@@ -292,19 +274,27 @@ class Gallery extends Q\Control\Panel
         $this->btnListDelete = new Q\Plugin\Button($this);
         $this->btnListDelete->Text = t('Delete');
         $this->btnListDelete->CssClass = 'btn btn-default';
-        $this->btnListDelete->setCssStyle('float', 'left');
-        $this->btnListDelete->addWrapperCssClass('center-button');
+        $this->btnListDelete->setCssStyle('float', 'right');
+        $this->btnListDelete->setCssStyle('margin-left', '10px');
         $this->btnListDelete->CausesValidation = false;
         $this->btnListDelete->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnListDelete_Click'));
 
+        $this->btnBackToList = new Bs\Button($this);
+        $this->btnBackToList->Text = t('Back to list');
+        $this->btnBackToList->CssClass = 'btn btn-default';
+        $this->btnBackToList->setCssStyle('float', 'right');
+        $this->btnBackToList->setCssStyle('margin-left', '10px');
+        $this->btnBackToList->UseWrapper = false;
+        $this->btnBackToList->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this,'btnBackToList_Click'));
+
         $this->btnSave = new Bs\Button($this->dtgGalleryList);
-        $this->btnSave->Text = 'Save';
+        $this->btnSave->Text = t('Save');
         $this->btnSave->CssClass = 'btn btn-orange';
         $this->btnSave->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnSave_Click'));
         $this->btnSave->PrimaryButton = true;
 
         $this->btnCancel = new Bs\Button($this->dtgGalleryList);
-        $this->btnCancel->Text = 'Cancel';
+        $this->btnCancel->Text = t('Cancel');
         $this->btnCancel->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnCancel_Click'));
         $this->btnCancel->CausesValidation = false;
     }
@@ -344,15 +334,20 @@ class Gallery extends Q\Control\Panel
     {
         $this->dlgModal1 = new Bs\Modal($this);
         $this->dlgModal1->Title = t('Tip');
-        $this->dlgModal1->Text = t('<p style="margin-top: 15px;">The gallery cannot be updated without a name!</p>');
+        $this->dlgModal1->Text = t('<p style="margin-top: 15px;">The album cannot be updated without a name!</p>');
         $this->dlgModal1->HeaderClasses = 'btn-darkblue';
         $this->dlgModal1->addCloseButton(t("I close the window"));
 
         $this->dlgModal2 = new Bs\Modal($this);
-        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Cannot update a gallery with the same name!</p>');
+        $this->dlgModal2->Text = t('<p style="margin-top: 15px;">If the brief description is already filled in and 
+                                the author\'s name/source is not provided, the album will automatically become invisible!</p>
+                                <p style="margin-top: 25px; margin-bottom: 15px;">Please write a brief description or delete the author\'s name/source!</p>');
         $this->dlgModal2->Title = t("Warning");
         $this->dlgModal2->HeaderClasses = 'btn-danger';
-        $this->dlgModal2->addCloseButton(t("I understand"));
+        $this->dlgModal2->addButton(t("I will hide the album"), null, false, false, null,
+            ['class' => 'btn btn-orange']);
+        $this->dlgModal2->addCloseButton(t("I will fill in the description"));
+        $this->dlgModal2->addAction(new Q\Event\DialogButton(), new Q\Action\AjaxControl($this, 'fillDescription_Click'));
 
         $this->dlgModal3 = new Bs\Modal($this);
         $this->dlgModal3->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this file?</p>
@@ -377,7 +372,7 @@ class Gallery extends Q\Control\Panel
         $this->dlgModal5->addCloseButton(t("I understand"));
 
         $this->dlgModal6 = new Bs\Modal($this);
-        $this->dlgModal6->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this gallery?</p>
+        $this->dlgModal6->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Are you sure you want to permanently delete this album?</p>
                                 <p style="line-height: 25px; margin-bottom: -3px;">Can\'t undo it afterwards!</p>');
         $this->dlgModal6->Title = 'Warning';
         $this->dlgModal6->HeaderClasses = 'btn-danger';
@@ -385,6 +380,32 @@ class Gallery extends Q\Control\Panel
             ['class' => 'btn btn-orange']);
         $this->dlgModal6->addCloseButton(t("I'll cancel"));
         $this->dlgModal6->addAction(new \QCubed\Event\DialogButton(), new \QCubed\Action\AjaxControl($this, 'deleteGallery_Click'));
+
+        $this->dlgModal7 = new Bs\Modal($this);
+        $this->dlgModal7->Title = t('Tip');
+        $this->dlgModal7->Text = t('<p style="margin-top: 15px;">The album status cannot be changed to public without images!</p>
+                                <p style="margin-top: 25px; margin-bottom: 15px;">After uploading images, you can modify the album title or delete the album.');
+        $this->dlgModal7->HeaderClasses = 'btn-darkblue';
+        $this->dlgModal7->addCloseButton(t("I understand"));
+
+        $this->dlgModal8 = new Bs\Modal($this);
+        $this->dlgModal8->Text = t('<p style="margin-top: 15px;">A album with the same name already exists!</p>
+                                <p style="margin-top: 25px; margin-bottom: 15px;">Please choose another suitable name!</p>');
+        $this->dlgModal8->Title = t("Warning");
+        $this->dlgModal8->HeaderClasses = 'btn-danger';
+        $this->dlgModal8->addCloseButton(t("I understand"));
+
+        $this->dlgModal9 = new Bs\Modal($this);
+        $this->dlgModal9->Text = t('<p style="margin-top: 15px;">If the brief description is already filled in and 
+                                the author\'s name/source is not provided, the album will automatically become invisible!</p>
+                                <p style="margin-top: 25px; margin-bottom: 15px;">Please write a brief description or 
+                                delete the author\'s name/source!</p>');
+        $this->dlgModal9->Title = t("Warning");
+        $this->dlgModal9->HeaderClasses = 'btn-danger';
+        $this->dlgModal9->addButton(t("I will hide the album"), null, false, false, null,
+            ['class' => 'btn btn-orange']);
+        $this->dlgModal9->addCloseButton(t("I will fill in the author's name"));
+        $this->dlgModal9->addAction(new Q\Event\DialogButton(), new Q\Action\AjaxControl($this, 'fillAuthorName_Click'));
     }
 
     public function createToastr()
@@ -392,13 +413,13 @@ class Gallery extends Q\Control\Panel
         $this->dlgToastr1 = new Q\Plugin\Toastr($this);
         $this->dlgToastr1->AlertType = Q\Plugin\Toastr::TYPE_SUCCESS;
         $this->dlgToastr1->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr1->Message = t('<strong>Well done!</strong> Gallery update was successful.');
+        $this->dlgToastr1->Message = t('<strong>Well done!</strong> Album update was successful.');
         $this->dlgToastr1->ProgressBar = true;
 
         $this->dlgToastr2 = new Q\Plugin\Toastr($this);
         $this->dlgToastr2->AlertType = Q\Plugin\Toastr::TYPE_ERROR;
         $this->dlgToastr2->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr2->Message = t('<strong>Sorry!</strong> Failed to update gallery.');
+        $this->dlgToastr2->Message = t('<strong>Sorry!</strong> Failed to update album.');
         $this->dlgToastr2->ProgressBar = true;
 
         $this->dlgToastr3 = new Q\Plugin\Toastr($this);
@@ -428,13 +449,13 @@ class Gallery extends Q\Control\Panel
         $this->dlgToastr7 = new Q\Plugin\Toastr($this);
         $this->dlgToastr7->AlertType = Q\Plugin\Toastr::TYPE_SUCCESS;
         $this->dlgToastr7->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr7->Message = t('<strong>Well done!</strong> The folder and files have been successfully deleted.');
+        $this->dlgToastr7->Message = t('<strong>Well done!</strong> The album and files have been successfully deleted.');
         $this->dlgToastr7->ProgressBar = true;
 
         $this->dlgToastr8 = new Q\Plugin\Toastr($this);
         $this->dlgToastr8->AlertType = Q\Plugin\Toastr::TYPE_ERROR;
         $this->dlgToastr8->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr8->Message = t('<strong>Sorry!</strong> Failed to delete folder and files.');
+        $this->dlgToastr8->Message = t('<strong>Sorry!</strong> Failed to delete album and files.');
         $this->dlgToastr8->ProgressBar = true;
     }
 
@@ -443,13 +464,13 @@ class Gallery extends Q\Control\Panel
         $blnCheckGallery = Galleries::countByFolderId($this->intFolder);
         if ($blnCheckGallery) {
             Application::executeJavaScript("
-                $('.fileinfo-wrapper').removeClass('hidden');
-                $('.table-gallery').removeClass('hidden');
+                $('.upload-wrapper').addClass('hidden');
+                $('.table-body').removeClass('hidden');
             ");
         } else {
             Application::executeJavaScript("
-                $('.fileinfo-wrapper').addClass('hidden');
-                $('.table-gallery').addClass('hidden');
+                $('.upload-wrapper').removeClass('hidden');
+                $('.table-body').addClass('hidden');
             ");
         }
     }
@@ -462,6 +483,12 @@ class Gallery extends Q\Control\Panel
         unset($_SESSION['listId']);
         unset($_SESSION['albumId']);
         unset($_SESSION['folderId']);
+
+        Application::executeJavaScript("
+            $('.upload-wrapper').addClass('hidden');
+            $('.fileinfo-wrapper').removeClass('hidden');
+            $('.table-body').removeClass('hidden');
+        ");
     }
 
     protected function uploadStart_Click(ActionParams $params)
@@ -474,21 +501,45 @@ class Gallery extends Q\Control\Panel
 
     protected function btnListUpdate_Click(ActionParams $params)
     {
-        $parts = pathinfo($this->strRootPath . $this->objGalleriesList->getPath());
-        $folders = glob($parts['dirname'] . '/*', GLOB_NOSORT);
-        $oldTitle = $this->objGalleriesList->getTitle(); //$this->txtTitle->Text;
         $this->oldPath = $this->objGalleriesList->getPath();
+        $parentFolder = $this->objAlbum->getPath();
+        $path = $this->strRootPath . $parentFolder;
+        $scanned_directory = array_diff(scandir($path), array('..', '.'));
 
         if (!$this->txtTitle->Text) {
             $this->dlgModal1->showDialogBox();
-        } else if ((strlen($this->txtTitle->Text) == strlen($this->objGalleriesList->getTitle())) &&
-            (strlen($this->txtAuthor->Text) !== strlen($this->objGalleriesList->getAuthor()) ||
-            strlen($this->txtDescription->Text) !==  strlen($this->objGalleriesList->getDescription()) ||
-            $this->lstStatusGallery->SelectedValue !== $this->objGalleriesList->getStatus())) {
-            $this->updateGalleries($this->intGalleriesList);
-        } else if (in_array($parts['dirname'] . '/' . QString::sanitizeForUrl(trim($this->txtTitle->Text)), $folders)) {
+        } else if ($this->txtAuthor->Text && strlen($this->txtDescription->Text) == 0) {
             $this->dlgModal2->showDialogBox();
-            $this->txtTitle->Text = $oldTitle;
+            $this->txtDescription->setHtmlAttribute('required', 'required');
+
+            if ($this->lstStatusGallery->SelectedValue == 1) {
+                $this->lstStatusGallery->SelectedValue = 2;
+            }
+
+        } else if ($this->txtDescription->Text && strlen($this->txtAuthor->Text) == 0) {
+            $this->dlgModal9->showDialogBox();
+            $this->txtAuthor->setHtmlAttribute('required', 'required');
+
+            if ($this->lstStatusGallery->SelectedValue == 1) {
+                $this->lstStatusGallery->SelectedValue = 2;
+            }
+
+        } else if (Galleries::countByListId($this->intGalleriesList) == 0) {
+            $this->dlgModal7->showDialogBox();
+            $this->txtTitle->Text = $this->objGalleriesList->getTitle();
+            $this->lstStatusGallery->SelectedValue = 2;
+        } else if (strlen($this->txtTitle->Text) !== strlen($this->objGalleriesList->getTitle()) &&
+            ($this->lstStatusGallery->SelectedValue == $this->objGalleriesList->getStatus() ||
+                $this->lstStatusGallery->SelectedValue !== $this->objGalleriesList->getStatus() ) &&
+            in_array(QString::sanitizeForUrl(trim($this->txtTitle->Text)), $scanned_directory)) {
+                $this->dlgModal8->showDialogBox();
+                $this->txtTitle->Text = $this->objGalleriesList->getTitle();
+        } else if ((strlen($this->txtTitle->Text) == strlen($this->objGalleriesList->getTitle())) &&
+            strlen($this->txtAuthor->Text) !== strlen($this->objGalleriesList->getListAuthor()) ||
+            strlen($this->txtDescription->Text) !==  strlen($this->objGalleriesList->getListDescription()) ||
+            $this->lstStatusGallery->SelectedValue !== $this->objGalleriesList->getStatus()
+        ) {
+            $this->updateGalleries($this->intGalleriesList);
         } else {
            $this->updateGalleries($this->intGalleriesList);
         }
@@ -513,8 +564,8 @@ class Gallery extends Q\Control\Panel
                 $objList->setTitle($this->txtTitle->Text);
                 $objList->setPath($this->getRelativePath($newPath));
                 $objList->setTitleSlug(QString::sanitizeForUrl(trim($this->txtTitle->Text)));
-                $objList->setDescription($this->txtDescription->Text);
-                $objList->setAuthor($this->txtAuthor->Text);
+                $objList->setListDescription($this->txtDescription->Text);
+                $objList->setListAuthor($this->txtAuthor->Text);
                 $objList->setStatus($this->lstStatusGallery->SelectedValue);
                 $objList->setPostUpdateDate(Q\QDateTime::Now());
                 $objList->save();
@@ -540,8 +591,8 @@ class Gallery extends Q\Control\Panel
                 $objList->setTitle($this->txtTitle->Text);
                 $objList->setPath($this->getRelativePath($newPath));
                 $objList->setTitleSlug(QString::sanitizeForUrl(trim($this->txtTitle->Text)));
-                $objList->setDescription($this->txtDescription->Text);
-                $objList->setAuthor($this->txtAuthor->Text);
+                $objList->setListDescription($this->txtDescription->Text);
+                $objList->setListAuthor($this->txtAuthor->Text);
                 $objList->setStatus($this->lstStatusGallery->SelectedValue);
                 $objList->setPostUpdateDate(Q\QDateTime::Now());
                 $objList->save();
@@ -582,10 +633,6 @@ class Gallery extends Q\Control\Panel
             }
         }
 
-        $this->txtTitle->refresh();
-        $this->txtAuthor->refresh();
-        $this->txtDescription->refresh();
-
         if ($this->txtTitle->Text) {
             $url = (isset($_SERVER['HTTPS']) ? "https" : "http") . '://' . $_SERVER['HTTP_HOST'] . QCUBED_URL_PREFIX .
                 $this->objAlbum->getPath() . '/' . QString::sanitizeForUrl(trim($this->txtTitle->Text));
@@ -598,7 +645,43 @@ class Gallery extends Q\Control\Panel
         }
     }
 
-    protected function btnListBack_Click(ActionParams $params)
+    public function fillDescription_Click(ActionParams $params)
+    {
+        $this->lstStatusGallery->SelectedValue = 2;
+        $this->txtDescription->Text = '';
+        $this->txtAuthor->Text = '';
+        $this->txtDescription->removeHtmlAttribute('required');
+        $this->txtAuthor->removeHtmlAttribute('required');
+
+        $objList = ListOfGalleries::loadById($this->intGalleriesList);
+        $objList->setListDescription('');
+        $objList->setListAuthor('');
+        $objList->setStatus(2);
+        $objList->setPostUpdateDate(Q\QDateTime::Now());
+        $objList->save();
+
+        $this->dlgModal2->hideDialogBox();
+    }
+
+    public function fillAuthorName_Click(ActionParams $params)
+    {
+        $this->lstStatusGallery->SelectedValue = 2;
+        $this->txtDescription->Text = '';
+        $this->txtAuthor->Text = '';
+        $this->txtDescription->removeHtmlAttribute('required');
+        $this->txtAuthor->removeHtmlAttribute('required');
+
+        $objList = ListOfGalleries::loadById($this->intGalleriesList);
+        $objList->setListDescription('');
+        $objList->setListAuthor('');
+        $objList->setStatus(2);
+        $objList->setPostUpdateDate(Q\QDateTime::Now());
+        $objList->save();
+
+        $this->dlgModal9->hideDialogBox();
+    }
+
+    protected function btnBackToList_Click(ActionParams $params)
     {
         Application::redirect('gallery_list.php?id=' . $this->intAlbum);
     }
@@ -659,8 +742,9 @@ class Gallery extends Q\Control\Panel
         Application::executeJavaScript("
             $('.fileinput-button').addClass('disabled');
             $('.back-to-list').addClass('disabled');
+            $('.upload-wrapper').addClass('hidden');
             $('.fileinfo-wrapper').addClass('hidden');
-            $('.table-gallery').addClass('hidden');
+            $('.table-body').addClass('hidden');
             setTimeout(function() {
                 window.location.href = 'gallery_list.php?id={$this->intAlbum}'
             }, 5000)
@@ -819,9 +903,10 @@ class Gallery extends Q\Control\Panel
 
             Application::executeJavaScript("
                 $('.fileinput-button').removeClass('disabled');
-                $('.back-to-list').removeClass('disabled');
-                $('.fileinfo-wrapper').removeClass('hidden');
-                $('.table-gallery').addClass('hidden');
+                $('.back').removeClass('hidden');
+                $('.fileupload-donebar').addClass('hidden');
+                $('.upload-wrapper').removeClass('hidden');
+                $('.table-body').addClass('hidden');
             ");
 
             $objList = ListOfGalleries::loadById($this->intGalleriesList);

@@ -185,7 +185,7 @@ class GallerySettings extends Q\Control\Panel
         $this->dlgToastr2 = new Q\Plugin\Toastr($this);
         $this->dlgToastr2->AlertType = Q\Plugin\Toastr::TYPE_WARNING;
         $this->dlgToastr2->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr2->Message = t('<strong>Sorry!</strong> Folder name change failed!');
+        $this->dlgToastr2->Message = t('<strong>Sorry!</strong> Album name change failed!');
         $this->dlgToastr2->ProgressBar = true;
     }
 

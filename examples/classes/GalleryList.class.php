@@ -34,7 +34,7 @@ class GalleryList extends Q\Control\Panel
     public $dlgModal2;
     public $dlgToastr1;
 
-    public $btnAddGallery;
+    public $btnAddAlbum;
     public $btnSave;
     public $btnCancel;
     public $lblTitle;
@@ -135,7 +135,7 @@ class GalleryList extends Q\Control\Panel
     protected function createInputs()
     {
         $this->txtTitle = new Bs\TextBox($this);
-        $this->txtTitle->Placeholder = t('The title of the new gallery');
+        $this->txtTitle->Placeholder = t('The title of the new album');
         $this->txtTitle->MaxLength = ListOfGalleries::TitleMaxLength;
         $this->txtTitle->setHtmlAttribute('autocomplete', 'off');
         $this->txtTitle->setCssStyle('float', 'left');
@@ -181,15 +181,15 @@ class GalleryList extends Q\Control\Panel
 
     public function createButtons()
     {
-        $this->btnAddGallery = new Q\Plugin\Button($this);
-        $this->btnAddGallery->Text = t(' Add gallery');
-        $this->btnAddGallery->Glyph = 'fa fa-plus';
-        $this->btnAddGallery->CssClass = 'btn btn-orange';
-        $this->btnAddGallery->addWrapperCssClass('center-button');
-        $this->btnAddGallery->setCssStyle('float', 'left');
-        $this->btnAddGallery->setCssStyle('margin-right', '10px');
-        $this->btnAddGallery->CausesValidation = false;
-        $this->btnAddGallery->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnAddGallery_Click'));
+        $this->btnAddAlbum = new Q\Plugin\Button($this);
+        $this->btnAddAlbum->Text = t(' Add album');
+        $this->btnAddAlbum->Glyph = 'fa fa-plus';
+        $this->btnAddAlbum->CssClass = 'btn btn-orange';
+        $this->btnAddAlbum->addWrapperCssClass('center-button');
+        $this->btnAddAlbum->setCssStyle('float', 'left');
+        $this->btnAddAlbum->setCssStyle('margin-right', '10px');
+        $this->btnAddAlbum->CausesValidation = false;
+        $this->btnAddAlbum->addAction(new Q\Event\Click(), new Q\Action\AjaxControl($this, 'btnAddAlbum_Click'));
 
         $this->btnSave = new Q\Plugin\Button($this);
         $this->btnSave->Text = t('Save');
@@ -221,7 +221,7 @@ class GalleryList extends Q\Control\Panel
         $this->dlgModal1->addCloseButton(t("I close the window"));
 
         $this->dlgModal2 = new Bs\Modal($this);
-        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Cannot create a folder with the same name!</p>');
+        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Cannot create a album with the same name!</p>');
         $this->dlgModal2->Title = t("Warning");
         $this->dlgModal2->HeaderClasses = 'btn-danger';
         $this->dlgModal2->addCloseButton(t("I understand"));
@@ -232,18 +232,18 @@ class GalleryList extends Q\Control\Panel
         $this->dlgToastr1 = new Q\Plugin\Toastr($this);
         $this->dlgToastr1->AlertType = Q\Plugin\Toastr::TYPE_SUCCESS;
         $this->dlgToastr1->PositionClass = Q\Plugin\Toastr::POSITION_TOP_CENTER;
-        $this->dlgToastr1->Message = t('<strong>Well done!</strong> The gallery has been created and saved.');
+        $this->dlgToastr1->Message = t('<strong>Well done!</strong> The album has been created and saved.');
         $this->dlgToastr1->ProgressBar = true;
     }
 
-    protected function btnAddGallery_Click(ActionParams $params)
+    protected function btnAddAlbum_Click(ActionParams $params)
     {
         $this->txtTitle->Display = true;
         $this->btnSave->Display = true;
         $this->btnCancel->Display = true;
         $this->txtTitle->Text = null;
         $this->txtTitle->focus();
-        $this->btnAddGallery->Enabled = false;
+        $this->btnAddAlbum->Enabled = false;
     }
 
     protected function btnSave_Click(ActionParams $params)
@@ -263,7 +263,7 @@ class GalleryList extends Q\Control\Panel
             $this->txtTitle->Display = false;
             $this->btnSave->Display = false;
             $this->btnCancel->Display = false;
-            $this->btnAddGallery->Enabled = true;
+            $this->btnAddAlbum->Enabled = true;
             $this->txtTitle->Text = null;
         }
     }
@@ -373,7 +373,7 @@ class GalleryList extends Q\Control\Panel
         $this->txtTitle->Display = false;
         $this->btnSave->Display = false;
         $this->btnCancel->Display = false;
-        $this->btnAddGallery->Enabled = true;
+        $this->btnAddAlbum->Enabled = true;
         $this->txtTitle->Text = null;
     }
 

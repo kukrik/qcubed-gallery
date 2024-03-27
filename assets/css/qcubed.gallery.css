@@ -18,99 +18,42 @@ body,  html {
     min-height: 280px;
     border-radius: 0;
 }
-.content-body {
-    background-color: #fff;
-    border-radius: 4px;
-}
-.panel-body {
-    background-color : #fff;
-    border-radius : 4px;
-}
 .form-body {
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
 }
-.form-top {
-    margin: 0;
-    padding: 20px 15px 0 15px;
-}
-label {
-    display: inline-block;
-    max-width: 100%;
-    margin-bottom: 5px;
-    font-weight: 400;
-}
-.control-label .required {
-    color: #e02222;
-    font-size: 12px;
-    padding-left: 2px;
-}
-.form-control-static {
-    font-size: 14px;
-    padding-top: 0;
-    margin-bottom: -20px;
-}
-/* Forced removal or addition of a specified style */
-.form-control-remove {
-    margin-bottom: -50px;
-}
-.form-control-mini-remove {
-    margin-bottom: -40px;
-}
-.form-control-add {
-    margin-bottom: -5px;
-}
-.calendar-control-remove {
-    margin-bottom: -35px;
-}
-.panel-heading {
-    margin: 0;
-    padding: 15px 15px 15px 15px;
-    border-bottom-color: #dedede;
-}
-.table-heading {
-    margin: 0;
-    margin-bottom: 15px;
-    padding: 0 15px 15px 15px;
-    border-bottom: 1px solid #dedede;
-}
-.table-top-heading {
-    margin: 0;
-    padding: 0 15px 15px 15px;
-}
 .buttons-heading {
     margin-bottom: 15px;
     padding: 0 15px 15px 15px;
-    border-bottom: 1px solid #dedede;
+}
+.buttons {
+    margin-bottom: 30px;
+    padding: 0 0 30px 0;
+}
+.fileupload-buttonbar {
+    display: block;
+    margin-bottom: 20px;
+    padding: 0 0 20px 0;
 }
 .upload-heading {
-    margin-bottom: 15px;
     padding: 0 15px;
-    border-bottom: 1px solid #dedede;
+}
+.upload-wrapper {
+    display: block;
+    padding-top: 10px;
 }
 .fileinfo-wrapper {
-    margin-bottom: 42px;
-    padding: 0 0 42px 0;
-}
-.fileupload-buttons {
-    margin: 0;
-    padding-bottom: 50px;
-}
-.fileupload-buttonbar {
-    margin-bottom: 20px;
-}
-.fileupload-buttonbar {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #dedede;
 }
 .fileupload-donebar {
     display: block;
     border-top: 1px solid #ddd;
     margin: 0;
-    padding: 15px 0 25px 0 ;
-}
-.fileupload-buttonbar button {
-    margin-left: 5px;
+    padding: 15px 0 45px 0 ;
 }
 .table-bottom-heading {
     margin-top: 20px;
@@ -118,11 +61,9 @@ label {
     border-top: 1px solid #dedede;
 }
 .table-body {
-    margin: 0;
-    padding: 5px 0 0 0;
-}
-.table-gallery {
-    margin-top: -30px;
+    margin-top: 0;
+    padding: 20px 0 0 0;
+    border-top: 1px solid #dedede;
 }
 .buttons-body {
     margin: 0 0 30px 0;
@@ -213,7 +154,6 @@ i {
     -webkit-box-shadow: none;
     box-shadow: none;
     opacity: .65;
-    pointer-events: none;
 }
 .btn-darkblue.disabled/*, .btn-darkblue[disabled]*/ {
     color: #d2d2d2;
@@ -264,7 +204,8 @@ i {
     -webkit-box-shadow: none;
     box-shadow: none;
     opacity: 1;
-}a .target-group-wrapper {
+}
+a .target-group-wrapper {
     position: relative;
     min-height: 1px;
     padding-right: 10px;

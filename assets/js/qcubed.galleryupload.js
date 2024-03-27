@@ -120,16 +120,17 @@
 
         /////////////////////////////////////////
 
-        // Get a reference to the 3 buttons
+        // Get a reference to the 4 buttons
         const file_input = document.querySelector(".fileinput-button");
         const input = file_input.querySelector("#files");
         const all_start = document.querySelector(".all-start");
         const all_cancel = document.querySelector(".all-cancel");
         const fileupload_donebar = document.querySelector(".fileupload-donebar");
         const done_button = document.querySelector(".done");
-        // Get a reference to 2 divs
+        // Get a reference to 3 divs
+        const upload_wrapper = document.querySelector(".upload-wrapper");
         const fileinfo_wrapper = document.querySelector('.fileinfo-wrapper');
-        const table_gallery = document.querySelector('.table-gallery');
+        const table_body = document.querySelector('.table-body');
 
         /////////////////////////////////////////
 
@@ -145,6 +146,7 @@
         all_start.setAttribute("disabled", "disabled");
         all_cancel.classList.add("disabled");
         all_cancel.setAttribute("disabled", "disabled");
+
         // finished result handler
         done_button.addEventListener("click", doneForm);
 
@@ -316,13 +318,17 @@
             errorsExistenceControl();
 
             if (storedFiles.length > 0) {
+                upload_wrapper.classList.remove("hidden");
                 fileinfo_wrapper.classList.add('hidden');
-                table_gallery.classList.add('hidden');
+                table_body.classList.add('hidden');
             } else {
+                upload_wrapper.classList.add("hidden");
                 fileinfo_wrapper.classList.remove('hidden');
-                table_gallery.classList.remove('hidden');
+                table_body.classList.remove('hidden');
             }
         }
+
+        // window.location.href
 
         //////////////////////////////////////////
 
@@ -814,8 +820,9 @@
                 all_start.classList.add("disabled");
                 all_start.removeAttribute('disabled');
                 all_cancel.classList.add("disabled");
+                upload_wrapper.classList.add("hidden");
                 fileinfo_wrapper.classList.remove('hidden');
-                table_gallery.classList.remove('hidden');
+                table_body.classList.remove('hidden');
                 return;
             }
 
@@ -887,18 +894,23 @@
                 alert_multi_wrapper.innerHTML = "";
             }
 
-            if (storedFiles.length === 0) {
-                all_start.classList.add("disabled");
-                all_cancel.classList.add("disabled");
-            }
             this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
 
+            if (storedFiles.length === 0) {
+                all_start.classList.add("disabled");
+                all_start.setAttribute('disabled', 'disabled');
+                all_cancel.classList.add("disabled");
+                all_cancel.setAttribute('disabled', 'disabled');
+            }
+
             if (storedFiles.length > 0) {
+                upload_wrapper.classList.remove("hidden");
                 fileinfo_wrapper.classList.add('hidden');
-                table_gallery.classList.add('hidden');
+                table_body.classList.add('hidden');
             } else {
+                upload_wrapper.classList.add("hidden");
                 fileinfo_wrapper.classList.remove('hidden');
-                table_gallery.classList.remove('hidden');
+                table_body.classList.add('hidden');
             }
         }
 
@@ -930,11 +942,11 @@
 
             file_input.classList.remove("disabled");
             input.removeAttribute('disabled');
-            all_start.removeAttribute('disabled');
-            all_cancel.removeAttribute('disabled');
-            fileupload_donebar.classList.add("hidden");
-            fileinfo_wrapper.classList.remove('hidden');
-            table_gallery.classList.remove('hidden');
+
+            all_start.classList.add("disabled");
+            all_start.addAttribute('disabled');
+            all_cancel.classList.add("disabled");
+            all_cancel.addAttribute('disabled');
 
             while (storedFiles.length > 0) {
                 storedFiles.pop();

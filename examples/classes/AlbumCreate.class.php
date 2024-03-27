@@ -141,7 +141,7 @@ class AlbumCreate extends Q\Control\Panel
         $this->dlgModal1->addAction(new Bs\Event\ModalHidden(), new \QCubed\Action\AjaxControl($this, 'restoreTitle_Click'));
 
         $this->dlgModal2 = new Bs\Modal($this);
-        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Cannot create a folder with the same name!</p>');
+        $this->dlgModal2->Text = t('<p style="line-height: 25px; margin-bottom: 2px;">Cannot create a album with the same name!</p>');
         $this->dlgModal2->Title = t("Warning");
         $this->dlgModal2->HeaderClasses = 'btn-danger';
         $this->dlgModal2->addCloseButton(t("I understand"));
