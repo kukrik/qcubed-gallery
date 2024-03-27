@@ -32,7 +32,7 @@ CREATE TABLE `folders` (
   `activities_locked` int unsigned DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `name_idx` (`name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- ----------------------------
 -- Records of folders

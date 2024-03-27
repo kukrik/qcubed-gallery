@@ -41,6 +41,6 @@ CREATE TABLE `galleries` (
   KEY `id` (`id`,`status`),
   CONSTRAINT `list_id_galleries_ibfk` FOREIGN KEY (`list_id`) REFERENCES `list_of_galleries` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `status_galleries_ibfk` FOREIGN KEY (`status`) REFERENCES `status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=240 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vi_0900_ai_ci;
 
 SET FOREIGN_KEY_CHECKS = 1;
