@@ -85,7 +85,7 @@ class GalleryUploadBase extends GalleryUploadBaseGen
     protected function setup()
     {
         $this->strFullStoragePath = $this->strTempPath . '/' . $this->strStoragePath;
-        $strCreateDirs = ['/thumbnail', '/medium', '/large'];
+        $strCreateDirs = ['/thumbnail', '/medium', '/large', 'temp'];
 
         if (!is_dir($this->strRootPath)) {
             Folder::makeDirectory(QCUBED_PROJECT_DIR . '/assets/upload', 0777);

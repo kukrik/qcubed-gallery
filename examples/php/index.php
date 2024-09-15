@@ -2,6 +2,7 @@
 
 require_once('../qcubed.inc.php');
 
+
 use QCubed\Plugin\FileHandler;
 
 $options = array(
@@ -57,6 +58,47 @@ class CustomUploadHandler extends FileHandler
             $objFolder->setLockedFile(1);
             $objFolder->save();
         }
+    }
+
+    /**
+     * Get width of an image
+     * @param string $path
+     * @return mixed|string
+     */
+    public static function getImageWidth($path)
+    {
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $ImageSize = getimagesize($path);
+
+        if (in_array($ext, self::getImageExtensions())) {
+            $width = (isset($ImageSize[0]) ? $ImageSize[0] : '0');
+            return $width;
+        }
+    }
+
+    /**
+     * Get height of an image
+     * @param string $path
+     * @return mixed|string
+     */
+    public static function getImageHeight($path)
+    {
+        $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
+        $ImageSize = getimagesize($path);
+
+        if (in_array($ext, self::getImageExtensions())) {
+            $height = (isset($ImageSize[1]) ? $ImageSize[1] : '0');
+            return $height;
+        }
+    }
+
+    /**
+     * Get image files extensions
+     * @return array
+     */
+    public static function getImageExtensions()
+    {
+        return array('jpg', 'jpeg', 'bmp', 'png', 'webp', 'gif');
     }
 }
 
